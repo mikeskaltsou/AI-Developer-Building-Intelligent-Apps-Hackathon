@@ -20,6 +20,7 @@ Upon completing the workshop, participants will be able to:
 - Azure Subscription with OpenAI access. You can apply for access to Azure OpenAI by completing this [form](https://aka.ms/oai/access). Ensure that you register for approval to access and use the Azure OpenAI models before attending the workshop. The approval process may take up to 48 hours to copmlete.
 
 ## Target Audience
+The intended audience comprises individuals who have coding skills.
 - AI Engineers
 - Software Developers
 - Solution Architects
@@ -75,5 +76,6 @@ Upon completing the workshop, participants will be able to:
 - Please note that the content of this workshop may become outdated, as Azure AI is a rapidly evolving platform. We recommend staying engaged with the Azure AI community for the most current updates and practices.
     
 ## Contributors
-Phanis Parpas
-Sakis Rokanas
+- Phanis Parpas
+- Sakis Rokanas
+- Rodanthi Alexiou
