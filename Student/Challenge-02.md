@@ -1,87 +1,46 @@
-# Implement Retrieval Augmented Generation (RAG) with Azure OpenAI
+# Use prompt flow to query on own data with Search AI 
 
  [< Previous Challenge](./Challenge-01.md) - **[Home](../README.md)** - [Next Challenge >](./Challenge-03.md)
-
+ 
 ## Introduction
-After completing the basic setup of AI services and you try this in chat playground, it's time to start investigating, how you can write code to utilize the AI services.
+
+Once you've finished the initial setup in the chat playground, it's time to explore deploying a real-time endpoint. You discover that using Prompt flow can help you accomplish this.
 
 ## Description
-Now you’ll dive into .NET Core development by creating a simple console application and use your own data with Azure OpenAI models created in previous challenge.
 
-You can also use the Azure Open AI SDK of another programming language of your preference.
+You figure out that Prompt flow is a tool that simplifies the entire development cycle of AI applications using Large Language Models (LLMs). It streamlines prototyping, experimenting, iterating, and deploying your AI applications.
 
-In a console window use the dotnet new command to create a new console app. 
+By utilizing prompt flow, you're able to:
+- Create executable flows that link LLMs, prompts, and Python tools through a visualized graph.
+- Debug, share, and iterate your flows with ease through team collaboration.
+- Create prompt variants and evaluate their performance through large-scale testing.
+- Deploy a real-time endpoint that unlocks the full power of LLMs for your application.
 
-```bash
-dotnet new console -n azure-openai-sdk-hackathon
-```
+You will use generative AI and prompt flow UI to build, configure, and deploy a copilot.
 
-Install the OpenAI .NET client library with:
+The copilot should answer questions about your products and services. For example, the copilot can answer questions such as "How much do the TrailWalker hiking shoes cost?"
 
-```bash
-dotnet add package Azure.AI.OpenAI --prerelease
-```
+You should complete the following steps
+- Create a prompt flow from the playground, or create one from a template.
+- Customize prompt flow and ground your data created in previous challenge.
+- Evaluate the flow using a question and answer evaluation dataset.
+- Deploy the flow for consumption.
 
-Use the following code as an example and do any necessary changes to meet the success criteria
-
-```bash
-using Azure;
-using Azure.AI.OpenAI;
-using Azure.AI.OpenAI.Chat;
-using OpenAI.Chat;
-using System.Text.Json;
-using static System.Environment;
-
-string azureOpenAIEndpoint = GetEnvironmentVariable("AZURE_OPENAI_ENDPOINT");
-string azureOpenAIKey = GetEnvironmentVariable("AZURE_OPENAI_API_KEY");
-string deploymentName = GetEnvironmentVariable("AZURE_OPENAI_DEPLOYMENT_ID");
-string searchEndpoint = GetEnvironmentVariable("AZURE_AI_SEARCH_ENDPOINT");
-string searchKey = GetEnvironmentVariable("AZURE_AI_SEARCH_API_KEY");
-string searchIndex = GetEnvironmentVariable("AZURE_AI_SEARCH_INDEX");
-
-#pragma warning disable AOAI001
-AzureOpenAIClient azureClient = new(
-    new Uri(azureOpenAIEndpoint),
-    new AzureKeyCredential(azureOpenAIKey));
-ChatClient chatClient = azureClient.GetChatClient(deploymentName);
-
-ChatCompletionOptions options = new();
-options.AddDataSource(new AzureSearchChatDataSource()
-{
-    Endpoint = new Uri(searchEndpoint),
-    IndexName = searchIndex,
-    Authentication = DataSourceAuthentication.FromApiKey(searchKey),
-});
-
-ChatCompletion completion = chatClient.CompleteChat(
-    [
-        new UserChatMessage("What are my available health plans?"),
-    ], options);
-
-Console.WriteLine(completion.Content[0].Text);
-
-AzureChatMessageContext onYourDataContext = completion.GetAzureMessageContext();
-
-if (onYourDataContext?.Intent is not null)
-{
-    Console.WriteLine($"Intent: {onYourDataContext.Intent}");
-}
-foreach (AzureChatCitation citation in onYourDataContext?.Citations ?? [])
-{
-    Console.WriteLine($"Citation: {citation.Content}");
-}
-```
+You can find the sample product information data used in previous challenge [here](./Resources/Challenge-01/Data/product-info)
 
 ## Success Criteria
+- Demonstrate that you can chat within prompt flow with product info. Get answers to questions such as "How much are the TrailWalker hiking shoes?"
+- Evaluate the flow using a question and answer evaluation dataset
+- Show the evaluation status and results
+- Demonstrate that you deploy the flow and you can use the REST endpoint or the SDK to use the deployed flow.
 
-- Demonstrate that you can chat with your own data
-- Demonstrate that the user can ask questions on your own data within the application
-- Demonstrate that you set the behavior of the bot as a product information application.
-- Demonstrate that you use the conversation history as context for the subsequent calls.
-- Discuss with your coach alternative ways authenticating with Azure AI services.
-  
 ## Learning Resources
-- [Azure OpenAI Service supported programming languages - Azure AI services | Microsoft Learn](https://learn.microsoft.com/en-us/azure/ai-services/openai/supported-languages#programming-languages)
-- [Azure OpenAI client library for .NET - Azure for .NET Developers | Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/api/overview/azure/ai.openai-readme?view=azure-dotnet-preview)
-- [Authentication in Azure AI services - Azure AI services | Microsoft Learn](https://learn.microsoft.com/en-us/azure/ai-services/authentication)
-- [Authenticate to Azure OpenAI using .NET - .NET | Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/ai/azure-ai-services-authentication)
+
+### Prompt flow
+- [Prompt flow in Azure AI Studio - Azure AI Studio | Microsoft Learn](https://learn.microsoft.com/en-us/azure/ai-studio/how-to/prompt-flow)
+- [Work with Azure AI Studio projects in VS Code - Azure AI Studio | Microsoft Learn](https://learn.microsoft.com/en-us/azure/ai-studio/how-to/develop/vscode)
+- [Deploy a flow as a managed online endpoint for real-time inference - Azure AI Studio | Microsoft Learn](https://learn.microsoft.com/en-us/azure/ai-studio/how-to/flow-deploy)
+### Evaluate models in Azure AI Studio
+- [Evaluation of generative AI applications - Azure AI Studio | Microsoft Learn](https://learn.microsoft.com/en-us/azure/ai-studio/concepts/evaluation-approach-gen-ai)
+- [How to evaluate generative AI apps with Azure AI Studio - Azure AI Studio | Microsoft Learn](https://learn.microsoft.com/en-us/azure/ai-studio/how-to/evaluate-generative-ai-app)
+- [How to view evaluation results in Azure AI Studio - Azure AI Studio | Microsoft Learn](https://learn.microsoft.com/en-us/azure/ai-studio/how-to/evaluate-flow-results)
