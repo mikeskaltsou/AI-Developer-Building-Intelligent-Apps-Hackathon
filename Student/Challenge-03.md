@@ -1,4 +1,4 @@
-# Start coding with Azure OpenAI SDK
+# Challenge 03 - Start coding with Azure OpenAI SDK
 
  [< Previous Challenge](./Challenge-01.md) - **[Home](../README.md)** - [Next Challenge >](./Challenge-03.md)
 

@@ -1,4 +1,4 @@
-# Use prompt flow to query on own data with Search AI 
+# Challenge 02 - Use prompt flow to query on own data with Search AI.
 
  [< Previous Challenge](./Challenge-01.md) - **[Home](../README.md)** - [Next Challenge >](./Challenge-03.md)
  
