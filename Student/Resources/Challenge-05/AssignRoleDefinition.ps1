@@ -1,6 +1,7 @@
-$resourceGroup="AiRagCosmosDBNoSQL"
-$cosmosDbAccountName="airagcosmosdbnosqlaccount2"
-$principalId="<Add your prinipal is>"
+$resourceGroup="<Add resources group>"
+$cosmosDbAccountName="<Add CosmosDB account name>"
+$principalId="<Add your prinipal id>"
+# Built In role definition "Cosmos DB Built-in Data Reader"
 $roleDefinitionId="00000000-0000-0000-0000-000000000002"
 
 # Assign the role definition "Cosmos DB Built-in Data Reader" with id ""00000000-0000-0000-0000-000000000002"" to the principal

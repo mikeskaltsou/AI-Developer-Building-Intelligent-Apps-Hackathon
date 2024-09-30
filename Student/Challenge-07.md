@@ -1,6 +1,6 @@
-# Challenge 07 - Basic NL to SQL with semantic kernel.
+# Challenge 07 - Advanced NL to SQL with semantic kernel.
 
- [< Previous Challenge](./Challenge-05.md) - **[Home](../README.md)** - [Next Challenge >](./Challenge-07.md)
+ [< Previous Challenge](./Challenge-06.md) - **[Home](../README.md)**
  
 ## Introduction
 

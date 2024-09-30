@@ -1,4 +1,4 @@
-# Challenge 05 - Use Cosmos DB as a Vector DB to index your data
+# Challenge 05 - Use Cosmos DB as a Vector DB
 
  [< Previous Challenge](./Challenge-04.md) - **[Home](../README.md)** - [Next Challenge >](./Challenge-06.md)
  
@@ -26,10 +26,15 @@ Here's a streamlined process for building a RAG application with Azure Cosmos DB
 
 You should complete the following tasks
 - Deploy CosmosDb by using this [script](./Resources/Challenge-05/DeployCosmosDb.ps1)
-- Assign RBAC data plane permissions on CosmosDB
-- Open the solution in Visual Studio or Visual Studio code located [here](./Resources/Challenge-05/src) and make any necessary changes
+- Assign RBAC data plane permissions on CosmosDB as shown [here](./Resources/Challenge-05/src)
+- Open the solution in Visual Studio or Visual Studio code located [here](./Resources/Challenge-05/AssignRoleDefinition.ps1) and make any necessary changes
 
 ## Success Criteria
+- Demonstrate that you have created the Cosmos DB database
+- Demonstrate that you push the sample data into Cosmos DB
+- Demonstrate that you vectorize the sample data into Cosmos DB.
+- Demonstrate that you can ask questions on recipes and get responses on your own data stored in Cosmos DB
+- Explain to your coach the main differences of Azure AI Search and CosmosDB used as vector Database
 
 ## Learning Resources
 - [Retrieval Augmented Generation in Azure Cosmos DB | Microsoft Learn](https://learn.microsoft.com/en-us/azure/cosmos-db/gen-ai/rag)
