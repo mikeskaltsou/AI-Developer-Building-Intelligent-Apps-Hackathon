@@ -143,8 +143,10 @@ After completing the above you should create a [plugin to retrieve data from ext
 
 ## Success Criteria
 - Ensure that your application is running and your able to debug the application
+- Ensure that you can interract with the application and switch on or off the light bulbs.
 - Set a break point in one of the plugins and hit the break point with a user prompt
-- Create a plugin to retrieve data from external source (Azure AI Search) and generate grounded responses.
+- Create a plugin to retrieve data from external source (Azure AI Search) created in previous challenge to generate grounded responses.
+- Demonstrate that the user can ask questions on your own data within the application.
 
 ## Learning Resources
 - [Introduction to Semantic Kernel | Microsoft Learn](https://learn.microsoft.com/en-us/semantic-kernel/overview/)
