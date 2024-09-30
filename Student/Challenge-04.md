@@ -4,17 +4,19 @@
  
 ## Introduction
 
+After completing the integration with OpenAI SDK, it's time to take it a step further and use an orchestrator for building an intelligent application. You decided to investigate the Semantic Kernel. 
+
 Semantic Kernel is a lightweight, open-source development kit that lets you easily build AI agents and integrate the latest AI models into your C#, Python, or Java codebase. It serves as an efficient middleware that enables rapid delivery of enterprise-grade solutions. It achieves this by allowing you to define plugins that can be chained together in just a few lines of code.
 
 It combines prompts with existing APIs to perform actions. By describing your existing code to AI models, they’ll be called to address requests. When a request is made the model calls a function, and Semantic Kernel is the middleware translating the model's request to a function call and passes the results back to the model.
 
-This hands-on session will guide you through the process of developing your first intelligent app with Semantic Kernel
-
 ## Description
+
+This challenge will guide you through the process of developing your first intelligent app with Semantic Kernel.
 
 In just a few steps, you can build your first AI agent with Semantic Kernel in either Python, .NET, or Java.
 
-As a starting point you can follow the steps below to start development with Semantic Kernel. In this example, a plugin was created, allowing the AI agent to interact with a light bulb.
+As a starting point you can follow the steps below to start development with Semantic Kernel. In this example, you will create a plugin, allowing the AI agent to interact with a light bulb.
 
 
 
