@@ -33,7 +33,7 @@ The intended audience comprises individuals who have coding skills.
 
 - Azure OpenAI services, and installing the required development tools. This initial session is crucial to ensure that all participants are well-prepared and can fully engage with the workshop's content.
 
-### Day 1 - Challenge 1: **[Implement Retrieval Augmented Generation (RAG) with Azure OpenAI](Student/Challenge_01.md)**
+### Day 1 - Challenge 1: **[Implement Retrieval Augmented Generation (RAG) with Azure OpenAI](Student/Challenge-01.md)**
 
 - Dive into the world of RAG and learn how to enhance your AI applications by integrating Azure OpenAI’s capabilities. This session will guide you through the process of implementing RAG with Azure AI Search, enabling your applications to leverage external data sources for more grounded and contextually relevant responses.
 
