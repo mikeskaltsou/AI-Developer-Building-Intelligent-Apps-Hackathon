@@ -1,6 +1,6 @@
 # Challenge 03 - Start coding with Azure OpenAI SDK
 
- [< Previous Challenge](./Challenge-01.md) - **[Home](../README.md)** - [Next Challenge >](./Challenge-03.md)
+ [< Previous Challenge](./Challenge-02.md) - **[Home](../README.md)** - [Next Challenge >](./Challenge-04.md)
 
 ## Introduction
 After completing the prompt flow challenge, it's time to start investigating, how you can write code to utilize the AI services.
@@ -74,8 +74,8 @@ foreach (AzureChatCitation citation in onYourDataContext?.Citations ?? [])
 
 ## Success Criteria
 
-- Demonstrate that you can chat with your own data
-- Demonstrate that the user can ask questions on your own data within the application
+- Demonstrate that you can chat with your own data.
+- Demonstrate that the user can ask questions on your own data within the application.
 - Demonstrate that you set the behavior of the bot as a product information application.
 - Demonstrate that you use the conversation history as context for the subsequent calls.
 - Discuss with your coach alternative ways authenticating with Azure AI services.
