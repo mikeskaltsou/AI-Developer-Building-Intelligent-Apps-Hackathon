@@ -29,7 +29,7 @@ The intended audience comprises individuals who have coding skills.
 
 ---
 
-### Day 1 - Challenge 0: **[Setup and prepare Environment](Student/Challenge_00.md)**
+### Day 1 - Challenge 0: **[Setup and prepare Environment](Student/Challenge-00.md)**
 
 - Azure OpenAI services, and installing the required development tools. This initial session is crucial to ensure that all participants are well-prepared and can fully engage with the workshop's content.
 
@@ -37,15 +37,15 @@ The intended audience comprises individuals who have coding skills.
 
 - Dive into the world of RAG and learn how to enhance your AI applications by integrating Azure OpenAI’s capabilities. This session will guide you through the process of implementing RAG with Azure AI Search, enabling your applications to leverage external data sources for more grounded and contextually relevant responses.
 
-### Day 1 - Challenge 2: **[Use prompt flow to query on own data with Search AI.](Student/Challenge_02.md)**
+### Day 1 - Challenge 2: **[Use prompt flow to query on own data with Search AI.](Student/Challenge-02.md)**
 
 - Discover how to create a responsive QnA system using prompt flow, allowing for intuitive and efficient user interactions with your AI solutions.
 
-### Day 1 - Challenge 3: **[Start coding with Azure OpenAI SDK.](Student/Challenge_03.md)**
+### Day 1 - Challenge 3: **[Start coding with Azure OpenAI SDK.](Student/Challenge-03.md)**
 
 - Use Azure OpenAI SDK to start coding your intelligent apps.
 
-### Day 1 - Challenge 4: **[Use Semantic Kernel as an Orchestrator to create a basic intelligent app.](Student/Challenge_04.md)**
+### Day 1 - Challenge 4: **[Use Semantic Kernel as an Orchestrator to create a basic intelligent app.](Student/Challenge-04.md)**
 
 - Unlock the potential of Semantic Kernel in developing intelligent applications. Whether you prefer C# or Python, this session will provide you with the knowledge to incorporate Semantic Kernel into your applications, facilitating seamless integration of AI prompts with conventional programming languages for smarter, more responsive applications.
 
@@ -53,15 +53,15 @@ The intended audience comprises individuals who have coding skills.
 
 ---
 
-### Day 2 - Challenge 5: **[Use Cosmos DB as a Vector DB.](Student/Challenge_05.md)**
+### Day 2 - Challenge 5: **[Use Cosmos DB as a Vector DB.](Student/Challenge-05.md)**
 
 - Description
 
-### Day 2 - Challenge 6: **[Basic NL to SQL with semantic kernel..](Student/Challenge_06.md)**
+### Day 2 - Challenge 6: **[Basic NL to SQL with semantic kernel..](Student/Challenge-06.md)**
 
 - Description
 
-### Day 2 - Challenge 7: **[Advanced NL to SQL with semantic kernel by implementing RAG pattern via API calls to retrieve database schema.](Student/Challenge_07.md)**
+### Day 2 - Challenge 7: **[Advanced NL to SQL with semantic kernel by implementing RAG pattern via API calls to retrieve database schema.](Student/Challenge-07.md)**
 
 - Description
 
