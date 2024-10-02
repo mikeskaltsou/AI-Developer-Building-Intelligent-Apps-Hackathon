@@ -55,7 +55,7 @@ The intended audience comprises individuals who have coding skills.
 
 ### Day 2 - Challenge 5: **[Use Cosmos DB as a Vector DB.](Student/Challenge_05.md)**
 
-- Discover how to create a responsive QnA system using prompt flow, allowing for intuitive and efficient user interactions with your AI solutions.
+- Description
 
 ### Day 2 - Challenge 6: **[Basic NL to SQL with semantic kernel..](Student/Challenge_06.md)**
 
