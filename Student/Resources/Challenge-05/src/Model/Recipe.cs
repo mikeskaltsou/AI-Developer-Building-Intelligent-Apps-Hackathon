@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CosmosRecipeGuide
+namespace AIDevHackathon.ConsoleApp.VectorDB.Recipes
 {
 
     public class Recipe

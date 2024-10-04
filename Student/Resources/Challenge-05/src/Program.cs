@@ -1,17 +1,16 @@
 ﻿using Microsoft.Extensions.Configuration;
-using CosmosRecipeGuide;
 using Spectre.Console;
 using Console = Spectre.Console.AnsiConsole;
 using System.Net;
-using CosmosRecipeGuide.Services;
 using System.Net.Quic;
 using System.Diagnostics;
 using Newtonsoft.Json;
 using Spectre.Console.Extensions;
 using Spectre.Console.Json;
+using AIDevHackathon.ConsoleApp.VectorDB.Recipes.Services;
 
 
-namespace CosmosRecipeGuide
+namespace AIDevHackathon.ConsoleApp.VectorDB.Recipes
 {
     internal class Program
     {
@@ -24,7 +23,7 @@ namespace CosmosRecipeGuide
         {
 
             AnsiConsole.Write(
-               new FigletText("Contoso Recipes")
+               new FigletText("Vector DB Recipes")
                .Color(Color.Red));
 
             Console.WriteLine("");

@@ -4,7 +4,7 @@ using Azure.Core;
 using Microsoft.Azure.Cosmos;
 using System.Text.RegularExpressions;
 
-namespace CosmosRecipeGuide.Services;
+namespace AIDevHackathon.ConsoleApp.VectorDB.Recipes.Services;
 
 /// <summary>
 /// Service to access Azure OpenAI.
@@ -13,7 +13,7 @@ public class OpenAIService
 {
 
     private readonly string _openAIEmbeddingDeployment = string.Empty;
-    private readonly string _openAICompletionDeployment=string.Empty; 
+    private readonly string _openAICompletionDeployment = string.Empty;
     private readonly int _openAIMaxTokens = default;
 
     private readonly OpenAIClient? _openAIClient;
@@ -45,11 +45,11 @@ public class OpenAIService
         OpenAIClientOptions clientOptions = new OpenAIClientOptions()
         {
             Retry =
-            {
-                Delay = TimeSpan.FromSeconds(2),
-                MaxRetries = 10,
-                Mode = RetryMode.Exponential
-            }
+        {
+            Delay = TimeSpan.FromSeconds(2),
+            MaxRetries = 10,
+            Mode = RetryMode.Exponential
+        }
         };
 
         try
@@ -77,7 +77,7 @@ public class OpenAIService
                 Input = { data },
             };
             var response = await _openAIClient.GetEmbeddingsAsync(embeddingsOptions);
-          
+
             Embeddings embeddings = response.Value;
 
             float[] embedding = embeddings.Data[0].Embedding.ToArray();
@@ -103,15 +103,15 @@ public class OpenAIService
 
             ChatCompletionsOptions options = new()
             {
-                DeploymentName= _openAICompletionDeployment,
+                DeploymentName = _openAICompletionDeployment,
                 Messages =
-                {
-                    systemMessage,
-                    userMessage
-                },
+            {
+                systemMessage,
+                userMessage
+            },
                 MaxTokens = _openAIMaxTokens,
                 Temperature = 0.5f, //0.3f,
-                NucleusSamplingFactor = 0.95f, 
+                NucleusSamplingFactor = 0.95f,
                 FrequencyPenalty = 0,
                 PresencePenalty = 0
             };

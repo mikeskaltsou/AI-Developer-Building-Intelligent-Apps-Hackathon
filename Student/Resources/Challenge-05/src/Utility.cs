@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json;
 
-namespace CosmosRecipeGuide
+namespace AIDevHackathon.ConsoleApp.VectorDB.Recipes
 {
     internal static class Utility
     {

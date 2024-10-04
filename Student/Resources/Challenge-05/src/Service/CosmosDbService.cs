@@ -1,4 +1,5 @@
-﻿using Azure.AI.OpenAI;
+﻿using AIDevHackathon.ConsoleApp.VectorDB.Recipes;
+using Azure.AI.OpenAI;
 using Azure.Identity;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Cosmos.Fluent;
@@ -9,7 +10,7 @@ using System.Diagnostics;
 using Container = Microsoft.Azure.Cosmos.Container;
 using PartitionKey = Microsoft.Azure.Cosmos.PartitionKey;
 
-namespace CosmosRecipeGuide.Services;
+namespace AIDevHackathon.ConsoleApp.VectorDB.Recipes.Services;
 
 /// <summary>
 /// Service to access Azure Cosmos DB for NoSQL.
@@ -24,6 +25,7 @@ public class CosmosDbService
     /// Creates a new instance of the service.
     /// </summary>
     /// <param name="endpoint">Endpoint URI.</param>
+    /// <param name="key">Account key.</param>
     /// <param name="databaseName">Name of the database to access.</param>
     /// <param name="containerName">Name of the container to access.</param>
     /// <exception cref="ArgumentNullException">Thrown when endpoint, key, databaseName, or containerName is either null or empty.</exception>
@@ -33,6 +35,7 @@ public class CosmosDbService
     public CosmosDbService(string endpoint, string databaseName, string containerName)
     {
         ArgumentNullException.ThrowIfNullOrEmpty(endpoint);
+        //ArgumentNullException.ThrowIfNullOrEmpty(key);
         ArgumentNullException.ThrowIfNullOrEmpty(databaseName);
         ArgumentNullException.ThrowIfNullOrEmpty(containerName);
 
@@ -43,9 +46,9 @@ public class CosmosDbService
         };
 
         //_client = new CosmosClientBuilder(endpoint, key)
-         _client = new CosmosClientBuilder(endpoint, new DefaultAzureCredential())
-            .WithSerializerOptions(options)
-            .Build();
+        _client = new CosmosClientBuilder(endpoint, new DefaultAzureCredential())
+           .WithSerializerOptions(options)
+           .Build();
 
         _database = _client?.GetDatabase(databaseName);
         Container? container = _database?.GetContainer(containerName);
@@ -121,7 +124,7 @@ public class CosmosDbService
 
     public async Task<List<Recipe>> SingleVectorSearch(float[] vectors, double similarityScore)
     {
-        
+
         string queryText = @"SELECT Top 3 x.name,x.description, x.ingredients, x.cuisine,x.difficulty, x.prepTime,x.cookTime,x.totalTime,x.servings, x.similarityScore
                             FROM (SELECT c.name,c.description, c.ingredients, c.cuisine,c.difficulty, c.prepTime,c.cookTime,c.totalTime,c.servings,
                                 VectorDistance(c.vectors, @vectors, false) as similarityScore FROM c) x
@@ -195,7 +198,7 @@ public class CosmosDbService
         return queryResultSet.FirstOrDefault();
     }
 
-    public async Task AddRecipesAsync( List<Recipe> recipes)
+    public async Task AddRecipesAsync(List<Recipe> recipes)
     {
         BulkOperations<Recipe> bulkOperations = new BulkOperations<Recipe>(recipes.Count);
         foreach (Recipe recipe in recipes)
@@ -209,9 +212,9 @@ public class CosmosDbService
     public async Task UpdateRecipesAsync(Dictionary<string, float[]> dictInput)
     {
         BulkOperations<Recipe> bulkOperations = new BulkOperations<Recipe>(dictInput.Count);
-        foreach (KeyValuePair<string, float[]> entry in dictInput) 
+        foreach (KeyValuePair<string, float[]> entry in dictInput)
         {
-            await _container.PatchItemAsync<Recipe>(entry.Key,new PartitionKey(entry.Key), patchOperations: new[] { PatchOperation.Add("/vectors", entry.Value)});
+            await _container.PatchItemAsync<Recipe>(entry.Key, new PartitionKey(entry.Key), patchOperations: new[] { PatchOperation.Add("/vectors", entry.Value) });
         }
     }
 
@@ -240,7 +243,7 @@ public class CosmosDbService
             };
         }
     }
-    
+
 
     public class BulkOperationResponse<T>
     {
