@@ -27,7 +27,7 @@ Here's a streamlined process for building a RAG application with Azure Cosmos DB
 You should complete the following tasks
 - Deploy CosmosDb by using this [script](./Resources/Challenge-05/DeployCosmosDb.ps1)
 - Assign RBAC data plane permissions on CosmosDB as shown [here](./Resources/Challenge-05/src)
-- Open the solution in Visual Studio or Visual Studio code located [here](./Resources/Challenge-05/AssignRoleDefinition.ps1) and make any necessary changes
+- Open the solution in Visual Studio or Visual Studio code located [here](./Resources/Challenge-05/AssignRoleDefinition.ps1) and make any necessary changes to meet the success criteria
 
 ## Success Criteria
 - Demonstrate that you have created the Cosmos DB database
