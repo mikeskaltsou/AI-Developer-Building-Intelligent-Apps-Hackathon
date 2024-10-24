@@ -145,6 +145,7 @@ After completing the above you should create a [plugin to retrieve data from ext
 - Ensure that your application is running and your able to debug the application
 - Ensure that you can interract with the application and switch on or off the light bulbs.
 - Set a break point in one of the plugins and hit the break point with a user prompt
+- Debug and inspect the chat history object to see the sequence of function calls and results.
 - Create a plugin to retrieve data from external source (Azure AI Search) created in previous challenge to generate grounded responses.
 - Demonstrate that the user can ask questions on your own data within the application.
 
