@@ -45,7 +45,11 @@ After creating the plugin you should export the telemetry data to Application In
 - Demonstrate that you have created the plugin with all necessary functions. The functions shall use the methods provided in Database Service.
 - Demonstrate that you can ask questions in natural language and you get the answers with the actual data.
 - Demonstrate that you can see the telemetry in Application insights of the application.
+- Explain to your coach how the Function calling with chat completion works
+- Explain to your coach how the Auto Function Invocation works
 
 ## Learning Resources
 - [Provide native code to your agents | Microsoft Learn](https://learn.microsoft.com/en-us/semantic-kernel/concepts/plugins/adding-native-plugins?pivots=programming-language-csharp)
 - [Inspection of telemetry data with Application Insights | Microsoft Learn](https://learn.microsoft.com/en-us/semantic-kernel/concepts/enterprise-readiness/observability/telemetry-with-app-insights?tabs=Powershell&pivots=programming-language-csharp)
+- (Auto Function Invocation | Microsoft Learn)[https://learn.microsoft.com/en-us/semantic-kernel/concepts/ai-services/chat-completion/function-calling/function-invocation?pivots=programming-language-csharp#auto-function-invocation]
+- (Function calling with chat completion | Microsoft Learn)[https://learn.microsoft.com/en-us/semantic-kernel/concepts/ai-services/chat-completion/function-calling/?pivots=programming-language-csharp]
