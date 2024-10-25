@@ -3,21 +3,21 @@
  [< Previous Challenge](./Challenge-06.md) - **[Home](../README.md)**
  
 ## Introduction
-After completing the previous basic scenario of converting natural language to SQL queries now it's time to take it a step further and optimize your solution. In this challenge you will be implementing RAG pattern, so you are not passing the whole sql schema in LLM context. You will leverage the Semantic Kernel ability to decide what table schemas to include in LLm context. You will also enable Semantic Kernel to execute the SQL queries and display the results to the user. Finally you will add observability to your solution.process.
+After completing the previous basic scenario of converting natural language to SQL queries now it's time to take it a step further and optimize your solution. In this challenge you will be implementing RAG pattern, so you are not passing the whole sql schema in LLM context. You will leverage the Semantic Kernel ability to decide what table schemas to include in LLM context. You will also enable Semantic Kernel to execute the SQL queries and display the results to the user. Finally you will add observability to your solution.process.
 
 ## Description
 In the previous you practice how to convert natural language queries into SQL statements by using Semantic Kernel prompt plugin by passing the SQL schema into LLm context. 
 
 You will be given a sample database (Adventure Works) and you should issue the SQL statements based on the database schema. You can find the scripts to deploy the database in Azure [here](./Resources/Challenge-07/deploy-sql.azcli)
 
-Now you shall create a plugin with the following functions
+Create a plugin with the following functions. Please provide the semantic descriptions of the functions and parameters so the AI agent can understand them. Once you describe the functions and parameters, you enable Semantic Kernel Auto Invocation to make the right decisions and call the functions automatically based on the semantic meaning of your intent.
 - **Get database Info** -> Get the Database description
 - **Get database Schema Info** -> Get the Database schemas with their descriptions
 - **Get Database Schema Table Info** -> Get the Database tables with their descriptions for specific schema
 - **Get Database Schema Table Columns Info** -> Get the Database columns with their schema information for specific schema and table
 - **Execute Sql Command** -> Execute sql command and display results, show only the first 10 rows use only read operations, never update or delete anything from database
 
-You can create your functions as the example below
+You can create your functions like the example below
 
 ```csharp
         //Initialize the database service
