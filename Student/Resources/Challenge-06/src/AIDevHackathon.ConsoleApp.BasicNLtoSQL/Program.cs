@@ -46,11 +46,6 @@ namespace AIDevHackathon.ConsoleApp.BasicNLtoSQL
 
                 ChatHistory chatMessages = new ChatHistory(systemPrompt);
 
-                OpenAIPromptExecutionSettings settings = new()
-                {
-                    ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions
-                };
-
                 //Load the database schema
                 string sqlSchema = File.ReadAllText("Data\\dbschema.txt");
 

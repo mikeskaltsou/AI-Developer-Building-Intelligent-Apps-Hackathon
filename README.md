@@ -55,15 +55,15 @@ The intended audience comprises individuals who have coding skills.
 
 ### Day 2 - Challenge 5: **[Use Cosmos DB as a Vector DB.](Student/Challenge-05.md)**
 
-- Description
+- Use Cosmos DB as a Vector Database for grounding your own data. A vector database stores and manages vector embeddings for records, which are used in similarity search and Retrieval-Augmented Generation (RAG). CosmosDB allows you to store vectors directly in documents alongside traditional schema-free data, enabling efficient indexing and searching. This colocation of data and vectors simplifies data management, AI application architectures, and enhances the efficiency of vector-based operations.
 
-### Day 2 - Challenge 6: **[Basic NL to SQL with semantic kernel..](Student/Challenge-06.md)**
+### Day 2 - Challenge 6: **[Basic NL to SQL with semantic kernel](Student/Challenge-06.md)**
 
-- Description
+- Practice how to convert natural language queries into SQL statements by using Semantic Kernel .This challenge will help you understand how to translate user requests into precise SQL queries that can be executed on a database by passing the sql schema into LLM context window.
 
-### Day 2 - Challenge 7: **[Advanced NL to SQL with semantic kernel by implementing RAG pattern via API calls to retrieve database schema.](Student/Challenge-07.md)**
+### Day 2 - Challenge 7: **[Advanced NL to SQL with semantic kernel with RAG](Student/Challenge-07.md)**
 
-- Description
+- After completing the basic scenario of converting natural language to SQL queries, the next step is to optimise the solution by implementing the RAG pattern. This involves not passing the entire SQL schema in the LLM context. Instead, you will use the Semantic Kernel's ability to decide which table schemas to include. Additionally, you will enable the Semantic Kernel to execute SQL queries and display the results to the user. Finally, you will add observability to your solution.
 
 ## References
 - [Create a project and use the chat playground in Azure AI Studio - Azure AI Studio | Microsoft Learnage](https://learn.microsoft.com/en-us/azure/ai-studio/quickstarts/get-started-playground)

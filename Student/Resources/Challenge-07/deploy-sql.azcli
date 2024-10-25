@@ -14,6 +14,9 @@ az group create --name $resourceGroupName --location $location
 # Create a SQL server
 az sql server create --name $serverName --resource-group $resourceGroupName --location $location --admin-user $adminUsername --admin-password $adminPassword
 
+# Disable Azure Active Directory authentication for the SQL server
+az sql server ad-only-auth disable --resource-group $resourceGroupName --name $serverName
+
 # Create a SQL database
 az sql db create --name $databaseName --resource-group $resourceGroupName --server $serverName --edition "Standard" --service-objective "S2" --family None --capacity 50 --max-size 20GB --backup-storage-redundancy "Local"
 

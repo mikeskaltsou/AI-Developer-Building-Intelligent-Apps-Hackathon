@@ -8,9 +8,7 @@ You are tasked by the CTO with converting natural language queries into SQL stat
 ## Description
 In this challenge, you will practice converting natural language queries into SQL statements by using Semantic Kernel plugin. This exercise will help you understand how to translate user requests into precise SQL queries that can be executed on a database.
 
-You will be given a sample database (Adventure Works) and you should issue the SQL statements based on the database schema. You can find the scripts to deploy the database in Azure [here](./Resources/Challenge-07/deploy-sql.azcli)
-
-For this challenge you should add the Database Schema to Azure Open Ai context window.  You can find the database schema from [here](./Resources/Challenge-07/dbschema.txt)
+For this challenge you should add the Database Schema to Azure Open Ai context window.  You can find the database schema from [here](./Resources/Challenge-06/dbschema.txt)
 
 Semantic Kernel SDK supports a prompt templating language with some simple syntax rules. You don't need to write code or import any external libraries, just use the curly braces {{...}} to embed expressions in your prompts.
 
@@ -73,7 +71,6 @@ var result =  kernel.InvokeStreamingAsync("Prompts", "BasicNLtoSQL", new() { { "
 In the next challenge you will investigate alternative ways to optimize the solution. Discuss with your coach potential optimizations.
 
 ## Success Criteria
-- Demonstrate that you have deployed the Azure SQL database and you successfully import the Adventure Works sample database.
 - Demonstrate that you have created the "Natural language to SQL" Semantic Kernel Prompt Plugin
 - Demonstrate that you add the database schema in Azure Open Ai Context window and you set meaningful instructions to the bot.
 - Demonstrate that you can ask questions in natural language and you get responses with SQL queries.
