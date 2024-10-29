@@ -38,6 +38,7 @@ You can find the sample product information data used in previous challenge [her
 
 ### Prompt flow
 - [Prompt flow in Azure AI Studio - Azure AI Studio | Microsoft Learn](https://learn.microsoft.com/en-us/azure/ai-studio/how-to/prompt-flow)
+- [How to build with prompt flow - Azure AI Studio | Microsoft Learn](https://learn.microsoft.com/en-us/azure/ai-studio/how-to/flow-develop)
 - [Work with Azure AI Studio projects in VS Code - Azure AI Studio | Microsoft Learn](https://learn.microsoft.com/en-us/azure/ai-studio/how-to/develop/vscode)
 - [Deploy a flow as a managed online endpoint for real-time inference - Azure AI Studio | Microsoft Learn](https://learn.microsoft.com/en-us/azure/ai-studio/how-to/flow-deploy)
 ### Evaluate models in Azure AI Studio
