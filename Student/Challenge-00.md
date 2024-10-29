@@ -4,10 +4,13 @@
 
 ## Pre-requisites
 
-- Your laptop: Win, MacOS or Linux OR A development machine that you have **aadministrator rights**.
+- Your laptop (development machine): Win, MacOS or Linux that you have **administrator rights**.
 - Active Azure Subscription with **Contributor access** to create or modify resources and permissions.
+
 - Access granted to Azure OpenAI in the desired Azure subscription.
 Currently, access to this service is granted only by application. You can apply for access to Azure OpenAI by completing the [form](https://aka.ms/oai/access). Ensure that you register for approval to access and use the Azure OpenAI models before attending the workshop. The approval process may take up to 48 hours to complete.
+- Latest version of Azure CLI
+- Latest version of Visual Studio or Visual Studio Code
 
 ## Introduction
 
@@ -25,3 +28,6 @@ Setup and configure the following tools
 
 - You should be able to log in to the Azure Portal.
 - You should be able to [deploy an Azure OpenAI model](https://learn.microsoft.com/en-us/azure/ai-studio/how-to/deploy-models-openai#deploy-an-azure-openai-model-from-the-model-catalog) from the model catalog. Do not deploy one, just check if you have the option to deploy an Azure Open AI model.
+- You have a bash shell or PowerShell at your disposal (you can also use Azure Cloud Shell)
+- Running az --version shows the version of your Azure CLI
+- Visual Studio or Visual Studio Code is installed.

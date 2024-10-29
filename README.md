@@ -14,6 +14,8 @@ Upon completing the workshop, participants will be able to:
 - Apply the learned concepts to create innovative solutions that address real-world challenges using Azure OpenAI.
   
 ## Prerequisites
+- Your laptop (development machine): Win, MacOS or Linux that you have **administrator rights**.
+- Active Azure Subscription with **Contributor access** to create or modify resources and permissions.
 - Familiarity with Azure services and the Azure portal.
 - Basic understanding of AI and generative models.
 - Experience in programming with C# or Python
