@@ -62,8 +62,7 @@ namespace SK.NLtoSQL
 
                         // Get the chat completions
                         OpenAIPromptExecutionSettings openAIPromptExecutionSettings = new()
-                        {
-                            
+                        {                            
                             ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions
                         };
                         var result = chatCompletionService.GetStreamingChatMessageContentsAsync(
