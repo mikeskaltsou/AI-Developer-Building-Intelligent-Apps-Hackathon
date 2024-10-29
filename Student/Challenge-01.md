@@ -24,15 +24,17 @@ You should complete the following steps:
   - Test the model with your data
   - Deploy your web app  
 
-You can find the sample product information data [here](./Resources/Challenge-01/Data/product-info)
+You can find the sample product information data [here] for grounding your own data(./Resources/Challenge-01/Data/product-info)
 
 ## Success Criteria
 
-- Demonstrate that you can chat with your own data in AI Studio Chat Playground
-- Demonstrate that you get an answer (on product information data) by using the prompt "How much are the TrailWalker hiking shoes"
-- Deploy the web app and demonstrate that you can chat on your own data in the deployed app
+- Demonstrate that you can chat with your own data in AI Studio Chat Playground.
+- Demonstrate that you get an answer (on product information data) by using the prompt "How much are the TrailWalker hiking shoes".
+- Deploy the web app and demonstrate that you can chat on your own data in the deployed app.
   
 ## Learning Resources
+- [Create a project and use the chat playground in Azure AI Studio - Azure AI Studio | Microsoft Learn](https://learn.microsoft.com/en-us/azure/ai-studio/quickstarts/get-started-playground)
+- [Deploy an Enterprise Chat web app in the Azure AI Studio playground - Azure AI Studio | Microsoft Learn](https://learn.microsoft.com/en-us/azure/ai-studio/tutorials/deploy-chat-web-app)
 - [Azure AI Studio | Microsoft Learn](https://learn.microsoft.com/en-us/azure/ai-studio/what-is-ai-studio)
 - [RAG and generative AI - Azure AI Search | Microsoft Learn](https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview)
 - [Hybrid search - Azure AI Search | Microsoft Learn](https://learn.microsoft.com/en-us/azure/search/hybrid-search-overview)
