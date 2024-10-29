@@ -9,6 +9,7 @@ Upon completing the workshop, participants will be able to:
 - Understand the fundamentals of Retrieval Augmented Generation (RAG) and its implementation using Azure OpenAI.
 - Integrate Azure AI Search with RAG to enhance AI applications with contextually relevant data.
 - Design and build a QnA copilot system utilizing prompt flow in Azure AI Studio for efficient user interaction.
+- Develop intelligent applications using Azure Open AI SDK.
 - Develop intelligent applications using Semantic Kernel in either C# or Python, incorporating AI prompts seamlessly.
 - Apply the learned concepts to create innovative solutions that address real-world challenges using Azure OpenAI.
   
@@ -31,7 +32,7 @@ The intended audience comprises individuals who have coding skills.
 
 ### Day 1 - Challenge 0: **[Setup and prepare Environment](Student/Challenge-00.md)**
 
-- Azure OpenAI services, and installing the required development tools. This initial session is crucial to ensure that all participants are well-prepared and can fully engage with the workshop's content.
+- Install the required development tools. This initial session is crucial to ensure that all participants are well-prepared and can fully engage with the workshop's content.
 
 ### Day 1 - Challenge 1: **[Implement Retrieval Augmented Generation (RAG) with Azure OpenAI](Student/Challenge-01.md)**
 
@@ -57,11 +58,11 @@ The intended audience comprises individuals who have coding skills.
 
 - Use Cosmos DB as a Vector Database for grounding your own data. A vector database stores and manages vector embeddings for records, which are used in similarity search and Retrieval-Augmented Generation (RAG). CosmosDB allows you to store vectors directly in documents alongside traditional schema-free data, enabling efficient indexing and searching. This colocation of data and vectors simplifies data management, AI application architectures, and enhances the efficiency of vector-based operations.
 
-### Day 2 - Challenge 6: **[Basic NL to SQL with semantic kernel](Student/Challenge-06.md)**
+### Day 2 - Challenge 6: **[Basic Natural Language to SQL with Semantic Kernel](Student/Challenge-06.md)**
 
 - Practice how to convert natural language queries into SQL statements by using Semantic Kernel .This challenge will help you understand how to translate user requests into precise SQL queries that can be executed on a database by passing the sql schema into LLM context window.
 
-### Day 2 - Challenge 7: **[Advanced NL to SQL with semantic kernel with RAG](Student/Challenge-07.md)**
+### Day 2 - Challenge 7: **[Advanced Natural Language to SQL with Semantic Kernel with RAG](Student/Challenge-07.md)**
 
 - After completing the basic scenario of converting natural language to SQL queries, the next step is to optimise the solution by implementing the RAG pattern. This involves not passing the entire SQL schema in the LLM context. Instead, you will use the Semantic Kernel's ability to decide which table schemas to include. Additionally, you will enable the Semantic Kernel to execute SQL queries and display the results to the user. Finally, you will add observability to your solution.
 
@@ -73,6 +74,7 @@ The intended audience comprises individuals who have coding skills.
 - [Build and deploy a question and answer copilot with prompt flow in Azure AI Studio](https://learn.microsoft.com/en-us/azure/ai-studio/tutorials/deploy-copilot-ai-studio)
 - [Getting Started with Semantic Kernel](https://learn.microsoft.com/en-us/semantic-kernel/get-started/quick-start-guide)
 - [Develop AI agents using Azure OpenAI and the Semantic Kernel SDK - Training | Microsoft Learn](https://learn.microsoft.com/en-us/training/paths/develop-ai-agents-azure-open-ai-semantic-kernel-sdk/)
+- [MSLearn - Develop AI Agents with Azure OpenAI and Semantic Kernel-SDK](https://github.com/MicrosoftLearning/MSLearn-Develop-AI-Agents-with-Azure-OpenAI-and-Semantic-Kernel-SDK/tree/main)
 
 ## Repository Contents
 
