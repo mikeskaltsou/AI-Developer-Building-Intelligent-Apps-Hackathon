@@ -14,13 +14,14 @@ Upon completing the workshop, participants will be able to:
 - Apply the learned concepts to create innovative solutions that address real-world challenges using Azure OpenAI.
   
 ## Prerequisites
-- Your laptop (development machine): Win, MacOS or Linux that you have **administrator rights**.
-- Active Azure Subscription with **Contributor access** to create or modify resources and permissions.
 - Familiarity with Azure services and the Azure portal.
 - Basic understanding of AI and generative models.
 - Experience in programming with C# or Python
-- Visual Studio Code or Visual Studio
-- Azure Subscription with OpenAI access. You can apply for access to Azure OpenAI by completing this [form](https://aka.ms/oai/access). Ensure that you register for approval to access and use the Azure OpenAI models before attending the workshop. The approval process may take up to 48 hours to copmlete.
+- Your laptop (development machine): Win, MacOS or Linux that you have **administrator rights**.
+- Active Azure Subscription with **Contributor access** to create or modify resources and permissions.
+- Access to Azure OpenAI in the desired Azure subscription.
+- Latest version of Azure CLI
+- Latest version of Visual Studio or Visual Studio Code
 
 ## Target Audience
 The intended audience comprises individuals who have coding skills.
