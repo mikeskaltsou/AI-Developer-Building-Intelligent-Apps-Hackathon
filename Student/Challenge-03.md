@@ -5,6 +5,8 @@
 ## Introduction
 After completing the prompt flow challenge, it's time to start investigating, how you can write code to utilize the AI services.
 
+The Azure OpenAI library configures a client for use with Azure OpenAI and provides additional strongly typed extension support for request and response models specific to Azure OpenAI scenarios.
+
 ## Description
 Now you’ll dive into .NET Core development by creating a simple console application and use your own data with Azure OpenAI models created in previous challenge.
 
@@ -22,7 +24,7 @@ Install the OpenAI .NET client library with:
 dotnet add package Azure.AI.OpenAI --prerelease
 ```
 
-Use the following code as an example and do any necessary changes to meet the success criteria
+Use the following code as an example and do all necessary changes to meet the success criteria
 
 ```bash
 using Azure;
@@ -81,7 +83,8 @@ foreach (AzureChatCitation citation in onYourDataContext?.Citations ?? [])
 - Discuss with your coach alternative ways authenticating with Azure AI services.
   
 ## Learning Resources
-- [Azure OpenAI Service supported programming languages - Azure AI services | Microsoft Learn](https://learn.microsoft.com/en-us/azure/ai-services/openai/supported-languages#programming-languages)
+- [Azure OpenAI client library for .NET - Azure for .NET Developers | Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/api/overview/azure/ai.openai-readme?view=azure-dotnet)
 - [Azure OpenAI client library for .NET - Use your own data | Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/api/overview/azure/ai.openai-readme?view=azure-dotnet-preview#use-your-own-data-with-azure-openai)
+- [Azure OpenAI Service supported programming languages - Azure AI services | Microsoft Learn](https://learn.microsoft.com/en-us/azure/ai-services/openai/supported-languages#programming-languages)
 - [Authentication in Azure AI services - Azure AI services | Microsoft Learn](https://learn.microsoft.com/en-us/azure/ai-services/authentication)
 - [Authenticate to Azure OpenAI using .NET - .NET | Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/ai/azure-ai-services-authentication)
