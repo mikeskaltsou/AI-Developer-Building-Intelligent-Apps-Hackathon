@@ -25,7 +25,7 @@ dotnet add package Azure.AI.OpenAI --prerelease
 ```
 
 Add your environmental variables
-```bash
+```csharp
 string endpoint = "<Add AOAI GPT Enpoint>";
 string deploymentName = "<Add AOAI GPT Key>";
 string openAiApiKey = "<Add AOAI GPT Deployment name>";
@@ -35,9 +35,9 @@ string searchIndex = "<Add Azure Search Key>";
 string searchApiKey = "<Add Azure Search Index for eCommerce products>";
 ```
 
-Create client with an API key. While not as secure as Microsoft Entra-based authentication, it's possible to authenticate using a client subscription key:
+Create client with an API key. While this is not as secure as Microsoft Entra-based authentication, it's possible to authenticate using a client subscription key. Avoid authenticating with api keys on production environments.
 
-```bash
+```csharp
 AzureOpenAIClient azureClient = new(
     new Uri(endpoint),
     new ApiKeyCredential(openAiApiKey));
@@ -46,7 +46,7 @@ ChatClient chatClient = azureClient.GetChatClient(deploymentName);
 
 Use your own data with Azure OpenAI
 
-```bash
+```csharp
 #pragma warning disable AOAI001
 
 //Add chat completion options with data source 
