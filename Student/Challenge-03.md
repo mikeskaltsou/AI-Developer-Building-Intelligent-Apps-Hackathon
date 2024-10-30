@@ -71,7 +71,6 @@ You should make your application acting like a chat bot by adding conversation h
 
 ## Success Criteria
 
-- Demonstrate that you can chat with your own data.
 - Demonstrate that the user can ask questions on your own data within the application.
 - Demonstrate that you set the behavior of the bot as a product information application.
 - Demonstrate that you use the conversation history as context for the subsequent calls.
