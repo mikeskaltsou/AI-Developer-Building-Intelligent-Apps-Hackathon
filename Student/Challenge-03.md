@@ -24,55 +24,50 @@ Install the OpenAI .NET client library with:
 dotnet add package Azure.AI.OpenAI --prerelease
 ```
 
-Use the following code as an example and do all necessary changes to meet the success criteria
+Add your environmental variables
+```bash
+string endpoint = "<Add AOAI GPT Enpoint>";
+string deploymentName = "<Add AOAI GPT Key>";
+string openAiApiKey = "<Add AOAI GPT Deployment name>";
+
+string searchEndpoint = "<Add Azure Search Enpoint>";
+string searchIndex = "<Add Azure Search Key>";
+string searchApiKey = "<Add Azure Search Index for eCommerce products>";
+```
+
+Create client with an API key. While not as secure as Microsoft Entra-based authentication, it's possible to authenticate using a client subscription key:
 
 ```bash
-using Azure;
-using Azure.AI.OpenAI;
-using Azure.AI.OpenAI.Chat;
-using OpenAI.Chat;
-using System.Text.Json;
-using static System.Environment;
-
-string azureOpenAIEndpoint = GetEnvironmentVariable("AZURE_OPENAI_ENDPOINT");
-string azureOpenAIKey = GetEnvironmentVariable("AZURE_OPENAI_API_KEY");
-string deploymentName = GetEnvironmentVariable("AZURE_OPENAI_DEPLOYMENT_ID");
-string searchEndpoint = GetEnvironmentVariable("AZURE_AI_SEARCH_ENDPOINT");
-string searchKey = GetEnvironmentVariable("AZURE_AI_SEARCH_API_KEY");
-string searchIndex = GetEnvironmentVariable("AZURE_AI_SEARCH_INDEX");
-
-#pragma warning disable AOAI001
 AzureOpenAIClient azureClient = new(
-    new Uri(azureOpenAIEndpoint),
-    new AzureKeyCredential(azureOpenAIKey));
+    new Uri(endpoint),
+    new ApiKeyCredential(openAiApiKey));
 ChatClient chatClient = azureClient.GetChatClient(deploymentName);
+```
 
-ChatCompletionOptions options = new();
+Use your own data with Azure OpenAI
+
+```bash
+#pragma warning disable AOAI001
+
+//Add chat completion options with data source 
+ChatCompletionOptions options = new ChatCompletionOptions();
 options.AddDataSource(new AzureSearchChatDataSource()
 {
     Endpoint = new Uri(searchEndpoint),
     IndexName = searchIndex,
-    Authentication = DataSourceAuthentication.FromApiKey(searchKey),
+    Authentication = DataSourceAuthentication.FromApiKey(searchApiKey),
 });
 
-ChatCompletion completion = chatClient.CompleteChat(
-    [
-        new UserChatMessage("What are my available health plans?"),
-    ], options);
+//Add system message and user question
+List<ChatMessage> messages = new List<ChatMessage>();
+messages.Add(ChatMessage.CreateSystemMessage("You are an AI assistant that helps people find product information."));
+messages.Add(ChatMessage.CreateUserMessage("<Type your question here.>"));
 
-Console.WriteLine(completion.Content[0].Text);
-
-AzureChatMessageContext onYourDataContext = completion.GetAzureMessageContext();
-
-if (onYourDataContext?.Intent is not null)
-{
-    Console.WriteLine($"Intent: {onYourDataContext.Intent}");
-}
-foreach (AzureChatCitation citation in onYourDataContext?.Citations ?? [])
-{
-    Console.WriteLine($"Citation: {citation.Content}");
-}
+ChatCompletion completion = chatClient.CompleteChat(messages, options);
 ```
+
+Use the above code as an example and do all necessary changes to meet the success criteria.
+You should make your application acting like a chat bot by adding conversation history as context for the subsequent calls.
 
 ## Success Criteria
 

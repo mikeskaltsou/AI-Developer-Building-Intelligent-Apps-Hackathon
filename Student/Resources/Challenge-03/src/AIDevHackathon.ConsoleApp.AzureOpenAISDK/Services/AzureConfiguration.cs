@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DemoOpenAI.Services
+namespace AIDevHackathon.ConsoleApp.AzureOpenAISDK
 {
     // This class is used to read the configuration from the appsettings.json file
     internal class AzureConfiguration
@@ -30,22 +30,18 @@ namespace DemoOpenAI.Services
 
             AOAIEndpoint = _config["Azure:AOAIEndpoint"];
             AOAIKey = _config["Azure:AOAIKey"];
-            AOAIDeploymentId = _config["Azure:AOAIDeploymentId"];         
+            AOAIDeploymentId = _config["Azure:AOAIDeploymentId"];
             SearchEndpoint = _config["Azure:SearchEndpoint"];
             SearchKey = _config["Azure:SearchKey"];
             SearchIndex = _config["Azure:SearchIndex"];
-            SearchSemanticConfiguration = _config["Azure:SearchSemanticConfiguration"];
-            AOAIEmbeddingsEndpoint = _config["Azure:AOAIEmbeddingsEndpoint"];
+
         }
         public string AOAIEndpoint { get; set; }
         public string AOAIKey { get; set; }
         public string AOAIDeploymentId { get; set; }
-
-        public string AOAIEmbeddingsEndpoint { get; set; }
         public string SearchEndpoint { get; set; }
         public string SearchKey { get; set; }
         public string SearchIndex { get; set; }
-        public string SearchSemanticConfiguration { get; set; }
 
 
     }

@@ -1,60 +1,62 @@
-﻿using Azure;
+﻿// Install the .NET library via NuGet: dotnet add package Azure.AI.OpenAI --prerelease  
+using System;
+using System.ClientModel;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using AIDevHackathon.ConsoleApp.AzureOpenAISDK;
+using Azure;
 using Azure.AI.OpenAI;
-using DemoOpenAI.Services;
-using Microsoft.Extensions.Configuration;
+using Azure.AI.OpenAI.Chat;
+using OpenAI.Chat;
+using static System.Environment;
 
+// Disable the prerelease warning
+#pragma warning disable AOAI001
 
-namespace DemoOpenAI
+//Read the configuration from the appsettings.json file
+AzureConfiguration config = new AzureConfiguration();
+
+//Get the configuration values
+string endpoint = config.AOAIEndpoint;
+string deploymentName = config.AOAIDeploymentId;
+string openAiApiKey = config.AOAIKey;
+
+string searchEndpoint = config.SearchEndpoint;
+string searchIndex = config.SearchIndex; 
+string searchApiKey = config.SearchKey;
+
+//Create an instance of the AzureOpenAIClient
+AzureOpenAIClient azureClient = new(
+    new Uri(endpoint),
+    new ApiKeyCredential(openAiApiKey));
+ChatClient chatClient = azureClient.GetChatClient(deploymentName);
+
+//Add chat completion options with data source 
+ChatCompletionOptions options = new ChatCompletionOptions();
+options.AddDataSource(new AzureSearchChatDataSource()
 {
-    class Program
-    {
-        static async Task Main()
-        {
-            try
-            {
-                //Initialize confguration from appsettings.json
-                var azureConfig = new AzureConfiguration();
+    Endpoint = new Uri(searchEndpoint),
+    IndexName = searchIndex,
+    Authentication = DataSourceAuthentication.FromApiKey(searchApiKey),
+});
 
-                //Initialize OpenAI client with Ednpoint and Key
-                var aoaiClient = new OpenAIClient(new Uri(azureConfig.AOAIEndpoint), new AzureKeyCredential(azureConfig.AOAIKey));
+//Add system message and user question
+List<ChatMessage> messages = new List<ChatMessage>();
+messages.Add(ChatMessage.CreateSystemMessage("You are an AI assistant that helps people find product information."));
 
-                //Initialize AzureOpenAIChat service with OpenAI client
-                var azureOpenAIChat = new AzureOpenAIChat(aoaiClient);
+Console.WriteLine("Type your question here: ");
 
-                string userSelectionOption = string.Empty;
-                string userPromptInput = string.Empty;
+while (true)
+{
+    Console.WriteLine();
+    Console.Write("User: ");
+    messages.Add(ChatMessage.CreateUserMessage(Console.ReadLine()));
 
-                //Initialize OpenAI client with Ednpoint and Key for GPT 4
-                aoaiClient = new OpenAIClient(new Uri(azureConfig.AOAIEndpoint), new AzureKeyCredential(azureConfig.AOAIKey));
-                azureOpenAIChat = new AzureOpenAIChat(aoaiClient);
+    //Call the chat client to get the response
+    ChatCompletion completion = chatClient.CompleteChat(messages, options);
 
-                //Initialize chat completions with initial system prompt and Azure Cognitive Search with own data. Define also the search fields and Search query type
-                azureOpenAIChat.InitializeChatCompletionsOwnedData(PromptData.SystemPrompt_EcommerceAssistant, azureConfig.SearchEndpoint, azureConfig.SearchKey, azureConfig.SearchIndex,
-                    true, 20, AzureCognitiveSearchQueryType.VectorSemanticHybrid, "ProductID|ProductName|Description|CatalogDescription|ProductNumber|ProductModelName|StandardCost|Color|ListPrice|Size|Weight|Category",
-                    "ProductName", "ProductName", "ProductName", azureConfig.AOAIEmbeddingsEndpoint, azureConfig.AOAIKey, azureConfig.SearchSemanticConfiguration);
-                Console.WriteLine("I am your e-Commerce assistant and my answers will be based your own data source, you can ask me anything (type exit at any time to change option).");
-
-
-                while (true)
-                {
-                    while (true)
-                    {
-                        Console.WriteLine();
-                        //Get user input
-                        userPromptInput = Console.ReadLine();
-
-                        //Get chat completion messages from Azure OpenAI based on user prompt and search results from Azure Cognitive Search with own data
-                        List<ChatMessage> chatCompletionMessagesOwnedDataWithSearchResults = await azureOpenAIChat.GetChatCompletionStream(userPromptInput, azureConfig.AOAIDeploymentId);
-
-                        Console.WriteLine();
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
-        }
-    }
+    //Display the response and add it to chat history
+    string response = completion.Content[0].Text;
+    ChatMessage.CreateAssistantMessage(response);
+    Console.WriteLine($"System: {response}");
 }
