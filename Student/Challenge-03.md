@@ -75,6 +75,7 @@ You should make your application acting like a chat bot by adding conversation h
 - Demonstrate that the user can ask questions on your own data within the application.
 - Demonstrate that you set the behavior of the bot as a product information application.
 - Demonstrate that you use the conversation history as context for the subsequent calls.
+- (Optional) Demonstrate that you can stream the response chat messages.
 - Discuss with your coach alternative ways authenticating with Azure AI services.
   
 ## Learning Resources
