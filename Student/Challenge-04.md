@@ -4,7 +4,7 @@
  
 ## Introduction
 
-After completing the integration with Azure Open AI SDK, it's time to take it a step further and use an orchestrator for building an intelligent application. You decided to investigate the Semantic Kernel.
+After completing the integration with Azure Open AI SDK, it's time to take it a step further and use an orchestrator for building intelligent applications.
 
 Semantic Kernel is a lightweight, open-source development kit that lets you easily build AI agents and integrate the latest AI models into your C#, Python, or Java codebase. It serves as an efficient middleware that enables rapid delivery of enterprise-grade solutions. It achieves this by allowing you to define plugins that can be chained together in just a few lines of code.
 
@@ -21,9 +21,10 @@ As a starting point you can follow the steps below to start development with Sem
 If you are not familiar enough with .NET you can use the supported programming language (Python or Java) of your preference.
 
 
-1. Install the SDK
+1. Install the SDK and add Logging package
 ```bash
 dotnet add package Microsoft.SemanticKernel
+dotnet add package  Microsoft.Extensions.Logging.Console
 ```
 
 2. Import packages
@@ -31,35 +32,39 @@ dotnet add package Microsoft.SemanticKernel
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 ```
 
 3. Add AI services
 ```csharp
 // Create kernel
-var builder = Kernel.CreateBuilder()
+var builder = Kernel.CreateBuilder();
 builder.AddAzureOpenAIChatCompletion(modelId, endpoint, apiKey);
 ```
 
-4. Add enterprise services
-    One of the main benefits of using Semantic Kernel is that it supports enterprise-grade services. In this sample, we added the logging service to the kernel to help debug the AI agent.    
+4. Add enterprise services. One of the main benefits of using Semantic Kernel is that it supports enterprise-grade services. In this sample, we added the logging service to the kernel to help debug the AI agent.    
+
 ```csharp
+//Disable the experimental warning
+#pragma warning disable SKEXP0001
+
 builder.Services.AddLogging(services => services.AddConsole().SetMinimumLevel(LogLevel.Trace));
 ```
 
-5. Build the kernel and retrieve services
-    Once the services have been added, we  build the kernel and retrieve the chat completion service for later use.
+5. Build the kernel and retrieve services. Once the services have been added, we  build the kernel and retrieve the chat completion service for later use.
     ```csharp
     Kernel kernel = builder.Build();
 
     // Retrieve the chat completion service
     var chatCompletionService = kernel.Services.GetRequiredService<IChatCompletionService>();
     ```
-6. Add plugins
-    With plugins, you can give your AI agent the ability to run your code to retrieve information from external sources or to perform actions. In the above example, we added a plugin that allows the AI agent to interact with a light bulb.
+6. Add plugins. With plugins, you can give your AI agent the ability to run your code to retrieve information from external sources or to perform actions. In the above example, we added a plugin that allows the AI agent to interact with a light bulb.
     In your own code, you can create a plugin that interacts with any external service or API to achieve similar results.
     ```csharp
     using System.ComponentModel;
     using Microsoft.SemanticKernel;
+    using System.Linq;
 
     public class LightsPlugin
     {
@@ -76,7 +81,7 @@ builder.Services.AddLogging(services => services.AddConsole().SetMinimumLevel(Lo
     [return: Description("An array of lights")]
     public async Task<List<LightModel>> GetLightsAsync()
     {
-        return lights
+        return lights;
     }
 
     [KernelFunction("change_state")]
@@ -126,8 +131,7 @@ builder.Services.AddLogging(services => services.AddConsole().SetMinimumLevel(Lo
         FunctionChoiceBehavior = FunctionChoiceBehavior.Auto()
     };
     ```
-9. Invoke
-    Finally, we invoke the AI agent with the plugin. The sample code demonstrates how to generate a non-streaming response, but you can also generate a streaming response by using the GetStreamingChatMessageContentAsync method.
+9. Invoke the plugin. Finally, we invoke the AI agent with the plugin. The sample code demonstrates how to generate a non-streaming response, but you can also generate a streaming response by using the GetStreamingChatMessageContentAsync method.
 
     ```csharp
     // Create chat history
@@ -143,13 +147,13 @@ builder.Services.AddLogging(services => services.AddConsole().SetMinimumLevel(Lo
 
     10. After completing the above plugin you should create a [plugin to retrieve data from external source](https://learn.microsoft.com/en-us/semantic-kernel/concepts/plugins/using-data-retrieval-functions-for-rag) such us Azure AI Search and generate grounded responses with semantic search. Use the AI Search data source you created in previous challenges.
 
-    Semantic search utilizes vector databases to understand and retrieve information based on the meaning and context of the query rather than just matching keywords. This method allows the search engine to grasp the nuances of language, such as synonyms, related concepts, and the overall intent behind a query.
+    Semantic search utilizes vector databases to understand and retrieve information based on the meaning and context of the query rather than just matching keywords.
 
     Semantic search excels in environments where user queries are complex, open-ended, or require a deeper understanding of the content. For example, searching for "best smartphones for photography" would yield results that consider the context of photography features in smartphones, rather than just matching the words "best," "smartphones," and "photography."
 
     When providing an LLM with a semantic search function, you typically only need to define a function with a single search query. The LLM will then use this function to retrieve the necessary information. Below is an example of a semantic search function that uses Azure AI Search to find documents similar to a given query.
 
-    ```code
+    ```csharp
     using System.ComponentModel;
     using System.Text.Json.Serialization;
     using Azure;
@@ -210,8 +214,8 @@ builder.Services.AddLogging(services => services.AddConsole().SetMinimumLevel(Lo
     ```
 
 ## Success Criteria
-- Ensure that your application is running and your able to debug the application
-- Ensure that you can interract with the application and switch on or off the light bulbs.
+- Ensure that your application is running and your able to debug the application.
+- Ensure that you can interact with the application and switch on or off the light bulbs.
 - Set a break point in one of the plugins and hit the break point with a user prompt
 - Debug and inspect the chat history object to see the sequence of function calls and results.
 - Create a plugin to retrieve data from external source (Azure AI Search) created in previous challenge to generate grounded responses.
