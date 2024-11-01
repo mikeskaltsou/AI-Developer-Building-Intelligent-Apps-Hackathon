@@ -165,11 +165,18 @@ Semantic search utilizes vector databases to understand and retrieve information
 
 Semantic search excels in environments where user queries are complex, open-ended, or require a deeper understanding of the content. For example, searching for "best smartphones for photography" would yield results that consider the context of photography features in smartphones, rather than just matching the words "best," "smartphones," and "photography."
 
+Add the Azure.Search.Documents package
+```bash
+dotnet add package Azure.Search.Documents
+```
+
 When providing an LLM with a semantic search function, you typically only need to define a function with a single search query. The LLM will then use this function to retrieve the necessary information. Below is an example of a semantic search function that uses Azure AI Search to find documents similar to a given query.
 
 ```csharp
+using System;
 using System.ComponentModel;
 using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 using Azure;
 using Azure.Search.Documents;
 using Azure.Search.Documents.Indexes;
@@ -177,30 +184,32 @@ using Azure.Search.Documents.Models;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.Embeddings;
 
-public class InternalDocumentsPlugin
+public class ProductInfoPlugin
 {
+#pragma warning disable SKEXP0001
     private readonly ITextEmbeddingGenerationService _textEmbeddingGenerationService;
     private readonly SearchIndexClient _indexClient;
-
-    public AzureAISearchPlugin(ITextEmbeddingGenerationService textEmbeddingGenerationService, SearchIndexClient indexClient)
+    private readonly string _indexName;
+    public ProductInfoPlugin(ITextEmbeddingGenerationService textEmbeddingGenerationService, SearchIndexClient indexClient, string indexName)
     {
         _textEmbeddingGenerationService = textEmbeddingGenerationService;
         _indexClient = indexClient;
+        _indexName = indexName;
     }
 
     [KernelFunction("Search")]
-    [Description("Search for a document similar to the given query.")]
+    [Description("Search for product information to the given query.")]
     public async Task<string> SearchAsync(string query)
     {
         // Convert string query to vector
         ReadOnlyMemory<float> embedding = await _textEmbeddingGenerationService.GenerateEmbeddingAsync(query);
 
         // Get client for search operations
-        SearchClient searchClient = _indexClient.GetSearchClient("default-collection");
+        SearchClient searchClient = _indexClient.GetSearchClient(_indexName);
 
         // Configure request parameters
         VectorizedQuery vectorQuery = new(embedding);
-        vectorQuery.Fields.Add("vector");
+        vectorQuery.Fields.Add("contentVector");
 
         SearchOptions searchOptions = new() { VectorSearch = new() { Queries = { vectorQuery } } };
 
@@ -210,7 +219,7 @@ public class InternalDocumentsPlugin
         // Collect search results
         await foreach (SearchResult<IndexSchema> result in response.Value.GetResultsAsync())
         {
-            return result.Document.Chunk; // Return text from first result
+            return result.Document.Content; // Return text from first result
         }
 
         return string.Empty;
@@ -218,14 +227,27 @@ public class InternalDocumentsPlugin
 
     private sealed class IndexSchema
     {
-        [JsonPropertyName("chunk")]
-        public string Chunk { get; set; }
+        [JsonPropertyName("content")]
+        public string Content { get; set; }
 
-        [JsonPropertyName("vector")]
-        public ReadOnlyMemory<float> Vector { get; set; }
+        [JsonPropertyName("contentVector")]
+        public ReadOnlyMemory<float> ContentVector { get; set; }
     }
 }
 ```
+
+After implementing the Product Info plugin,  you should add the plugin to your Kernel.
+The AddFromObject method allows you to add an instance of the plugin class directly to the plugin collection in case you want to directly control how the plugin is constructed.
+So you have to instantiate the plugin object and add it to the Kernel like the example below
+```csharp
+kernel.Plugins.AddFromObject(productInfoPlugin);
+```
+
+> **Tip:**
+> The ProductInfoPlugin constructor has 3 parameters with the following types. You should instantiate these objects before instantiating the plugin.
+>  - ITextEmbeddingGenerationService
+>  - SearchIndexClient
+>  - string (index name)
 
 ## Success Criteria
 - Ensure that your application is running and your able to debug the application.
