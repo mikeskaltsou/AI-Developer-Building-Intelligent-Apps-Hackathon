@@ -157,7 +157,7 @@ history,
 executionSettings: openAIPromptExecutionSettings,
 kernel: kernel
 );
-    ```
+```
 
 After completing the above plugin you should create a [plugin to retrieve data from external source](https://learn.microsoft.com/en-us/semantic-kernel/concepts/plugins/using-data-retrieval-functions-for-rag) such us Azure AI Search and generate grounded responses with semantic search. Use the AI Search data source you created in previous challenges.
 
