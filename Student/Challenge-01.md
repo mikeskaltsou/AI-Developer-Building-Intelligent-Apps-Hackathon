@@ -26,7 +26,7 @@ You should complete the following steps:
   - Chat in the playground with your data.
   - Deploy your web app  
 
-You can find the sample product information data [here] for grounding your own data(./Resources/Challenge-01/Data/product-info)
+You can find the sample product information data for grounding your own data [here](./Resources/Challenge-01/Data/product-info)
 
 ## Success Criteria
 
