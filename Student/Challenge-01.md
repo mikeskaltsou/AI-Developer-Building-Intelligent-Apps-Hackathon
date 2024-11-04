@@ -12,8 +12,10 @@ You are a Cloud Solution Architect at Contoso. Recently, the CTO requested you t
 As an architect, you have conducted a thorough research and developed a comprehensive plan to achieve your  goals by leveraging Azure AI Studio and deploying an Enterprise Chat web app. 
 To begin, you will create a project in Azure AI Studio and deploy an Azure OpenAI model. This will allow you to chat in the playground without using your own data, ensuring a smooth initial setup. 
 Once confirmed, you will add your own data to the model and conduct testing to ensure it performs accurately with your specific information. 
-Finally, you will deploy the web app, providing a robust and interactive chat solution tailored to your needs. 
+Finally, you will deploy the web app, providing a robust and interactive chat solution tailored to your needs.
 This structured approach ensures that each step is carefully designed, leading to a successful implementation.
+
+Please deploy the Azure resources in East US 2 region.
 
 You should complete the following steps:
 
@@ -28,6 +30,7 @@ You can find the sample product information data [here] for grounding your own d
 
 ## Success Criteria
 
+- Ensure that you deploy the Azure resources in East US 2 region.
 - Demonstrate that you can chat with your own data in AI Studio Chat Playground.
 - Demonstrate that you get an answer (on product information data) by using the prompt "How much are the TrailWalker hiking shoes".
 - Deploy the web app and demonstrate that you can chat on your own data in the deployed app.
@@ -38,3 +41,5 @@ You can find the sample product information data [here] for grounding your own d
 - [Azure AI Studio | Microsoft Learn](https://learn.microsoft.com/en-us/azure/ai-studio/what-is-ai-studio)
 - [RAG and generative AI - Azure AI Search | Microsoft Learn](https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview)
 - [Hybrid search - Azure AI Search | Microsoft Learn](https://learn.microsoft.com/en-us/azure/search/hybrid-search-overview)
+- [Azure OpenAI Service models - Azure OpenAI | Microsoft Learn](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=python-secure%2Cglobal-standard%2Cstandard-chat-completions)
+- [Supported regions - Azure AI Search | Microsoft Learn](https://learn.microsoft.com/en-us/azure/search/search-region-support)
