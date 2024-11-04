@@ -23,7 +23,7 @@ You should complete the following steps:
   - Deploy an Azure OpenAI model.
   - Chat in the playground without your data.
   - Add your data
-  - Test the model with your data
+  - Chat in the playground with your data.
   - Deploy your web app  
 
 You can find the sample product information data [here] for grounding your own data(./Resources/Challenge-01/Data/product-info)
