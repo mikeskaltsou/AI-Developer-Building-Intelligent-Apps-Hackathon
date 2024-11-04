@@ -5,7 +5,7 @@
 ## Pre-requisites
 
 - Your laptop (development machine): Win, MacOS or Linux that you have **administrator rights**.
-- Active Azure Subscription with **Contributor access** to create or modify resources and permissions.
+- Active Azure Subscription with **Contributor access** to create or modify resources.
 - Access to Azure OpenAI in the desired Azure subscription.
 - Latest version of Azure CLI
 - Latest version of Visual Studio or Visual Studio Code
