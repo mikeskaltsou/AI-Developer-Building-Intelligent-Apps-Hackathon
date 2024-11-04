@@ -21,7 +21,7 @@ You will use generative AI and prompt flow UI to build, configure, and deploy a 
 The copilot should answer questions about your products and services. For example, the copilot can answer questions such as "How much do the TrailWalker hiking shoes cost?"
 
 You should complete the following steps
-- Create a prompt flow from the playground, or create one from a template.
+- Create a prompt flow from the playground
 - Customize prompt flow and ground your data created in previous challenge.
 - Evaluate the flow using a question and answer evaluation dataset.
 - Deploy the flow for consumption.
@@ -33,6 +33,7 @@ You can find the sample product information data used in previous challenge [her
 - Evaluate the flow using a question and answer evaluation dataset
 - Show the evaluation status and results
 - Demonstrate that you deploy the flow and you can use the REST endpoint or the SDK to use the deployed flow.
+- The prompt flow steps were automatically generated when the prompt flow was created from Chat playground. Describe the prompt flow steps to your coach.
 
 ## Learning Resources
 
