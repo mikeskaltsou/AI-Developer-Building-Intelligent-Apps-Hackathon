@@ -1,4 +1,5 @@
 ﻿using AIDevHackathon.ConsoleApp.VectorDB.Recipes;
+using Azure;
 using Azure.AI.OpenAI;
 using Azure.Identity;
 using Microsoft.Azure.Cosmos;
@@ -32,10 +33,10 @@ public class CosmosDbService
     /// <remarks>
     /// This constructor will validate credentials and create a service client instance.
     /// </remarks>
-    public CosmosDbService(string endpoint, string databaseName, string containerName)
+    public CosmosDbService(string endpoint, string databaseName, string containerName, string key)
     {
         ArgumentNullException.ThrowIfNullOrEmpty(endpoint);
-        //ArgumentNullException.ThrowIfNullOrEmpty(key);
+        ArgumentNullException.ThrowIfNullOrEmpty(key);
         ArgumentNullException.ThrowIfNullOrEmpty(databaseName);
         ArgumentNullException.ThrowIfNullOrEmpty(containerName);
 
@@ -45,8 +46,8 @@ public class CosmosDbService
             PropertyNamingPolicy = CosmosPropertyNamingPolicy.CamelCase
         };
 
-        //_client = new CosmosClientBuilder(endpoint, key)
-        _client = new CosmosClientBuilder(endpoint, new DefaultAzureCredential())
+        _client = new CosmosClientBuilder(endpoint,new AzureKeyCredential(key))
+        //_client = new CosmosClientBuilder(endpoint, new DefaultAzureCredential())
            .WithSerializerOptions(options)
            .Build();
 
@@ -124,7 +125,6 @@ public class CosmosDbService
 
     public async Task<List<Recipe>> SingleVectorSearch(float[] vectors, double similarityScore)
     {
-
         string queryText = @"SELECT Top 3 x.name,x.description, x.ingredients, x.cuisine,x.difficulty, x.prepTime,x.cookTime,x.totalTime,x.servings, x.similarityScore
                             FROM (SELECT c.name,c.description, c.ingredients, c.cuisine,c.difficulty, c.prepTime,c.cookTime,c.totalTime,c.servings,
                                 VectorDistance(c.vectors, @vectors, false) as similarityScore FROM c) x

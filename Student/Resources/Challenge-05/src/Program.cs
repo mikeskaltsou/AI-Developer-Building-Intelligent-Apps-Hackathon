@@ -102,8 +102,8 @@ namespace AIDevHackathon.ConsoleApp.VectorDB.Recipes
             string endpoint = config["CosmosUri"];
             string databaseName = config["CosmosDatabase"];
             string containerName = config["CosmosContainer"];
-            
-            
+            string key = config["CosmosKey"];
+
             int recipeWithEmbedding = 0;
             int recipeWithNoEmbedding = 0;
             bool containerExist = false;
@@ -117,7 +117,7 @@ namespace AIDevHackathon.ConsoleApp.VectorDB.Recipes
 
                     ctx.Status("Creating Cosmos DB Client ..");
 
-                    cosmosService = new CosmosDbService(endpoint, databaseName, containerName);
+                    cosmosService = new CosmosDbService(endpoint, databaseName, containerName, key);
                     ctx.Status("Getting Container Status");
                     
 
@@ -280,6 +280,7 @@ namespace AIDevHackathon.ConsoleApp.VectorDB.Recipes
 
 
                    ctx.Status("Performing Vector Search.. Retriving recipe(s) from Cosmos DB (RAG pattern)..");
+                   
                    var retrivedDocs=cosmosService.SingleVectorSearch(embeddingVector,0.60).GetAwaiter().GetResult();
 
                    ctx.Status($"Processing {retrivedDocs.Count} to generate Chat Response  using OpenAI Service..");
