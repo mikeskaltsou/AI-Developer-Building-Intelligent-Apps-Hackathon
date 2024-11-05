@@ -37,7 +37,7 @@ The demo has the following high level tasks:
 You should complete the following tasks
 1. Deploy CosmosDb by using this [script](./Resources/Challenge-05/DeployCosmosDb.ps1)
 
-2. Ensure that you enable Vecto Search in Cosmos DB
+2. Ensure that you enable Vector Search in Cosmos DB
 ```bash
 # Ensure that you enable NoSQL Vector Search capability
 az cosmosdb update --resource-group $resourceGroup --name $cosmosDbAccountName  --capabilities EnableNoSQLVectorSearch
@@ -46,6 +46,8 @@ az cosmosdb update --resource-group $resourceGroup --name $cosmosDbAccountName  
     - Make the necessary changes in CreateCosmosContainerAsync method
     - Make the necessary changes in GetEmbeddingsAsync method
     - Make the necessary changes in SingleVectorSearch method
+
+In case you are not familiar with .NET, you can use in the [Azure Data Retrieval Augmented Generation Samples](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples) the CosmosDB-NoSQL_VectorSearch sample for [Java](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/Java/CosmosDB-NoSQL-VectorSearch) or [Python](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/blob/main/Python/CosmosDB-NoSQL_VectorSearch/CosmosDB-NoSQL-Vector_AzureOpenAI_Tutorial.ipynb).
 
 ## Success Criteria
 - Demonstrate that you have created the Cosmos DB database
