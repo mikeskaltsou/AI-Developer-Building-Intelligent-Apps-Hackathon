@@ -1,12 +1,11 @@
-
-$resourceGroup="AiRagCosmosDBNoSQL"
-$location="eastus"
-$cosmosDbAccountName="airagcosmosdbnosqlaccount2"
-$cosmosDbDatabaseName="airagcosmosdbnosqldbname"
-$cosmosDbContainer="airagcosmosdbnosqlcontainer"
+$resourceGroup="<Add the resource group name>"
+$location="<Add the location>"
+$cosmosDbAccountName="<Add the Cosmos DB account name>"
+$cosmosDbDatabaseName="<Add the Cosmos DB database name>"
+$cosmosDbContainer="<Add the Cosmos DB container name>"
 
 # Log in to Azure
-az login
+# az login
 
 # Create a resource group
 az group create --name $resourceGroup --location $location
