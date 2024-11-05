@@ -46,6 +46,7 @@ public class CosmosDbService
             PropertyNamingPolicy = CosmosPropertyNamingPolicy.CamelCase
         };
 
+        // Create a new CosmosClient instance and authenticate with Api Key
         _client = new CosmosClientBuilder(endpoint,new AzureKeyCredential(key))
         //_client = new CosmosClientBuilder(endpoint, new DefaultAzureCredential())
            .WithSerializerOptions(options)
@@ -59,6 +60,10 @@ public class CosmosDbService
             throw new ArgumentException("Unable to connect to existing Azure Cosmos DB container or database.");
     }
 
+    /// <summary>
+    /// Checks if the Cosmos DB container exists.
+    /// </summary>
+    /// <returns>True if the container exists, otherwise false.</returns>
     public async Task<bool> CheckCollectionExistsAsync()
     {
         try
@@ -73,6 +78,12 @@ public class CosmosDbService
     }
 
 
+    /// <summary>
+    /// Creates a new Cosmos DB container with specified properties.
+    /// </summary>
+    /// <param name="databaseName">The name of the database.</param>
+    /// <param name="containerName">The name of the container to create.</param>
+    /// <returns>True if the container is created successfully, otherwise false.</returns>
     public async Task<bool> CreateCosmosContainerAsync(string databaseName, string containerName)
     {
         try
@@ -123,21 +134,32 @@ public class CosmosDbService
     }
 
 
+    /// <summary>
+    /// Performs a vector search on the recipes and returns the top 3 results based on similarity score.
+    /// </summary>
+    /// <param name="vectors">The vector to compare against the recipe vectors.</param>
+    /// <param name="similarityScore">The minimum similarity score to filter the results.</param>
+    /// <returns>A list of recipes that match the vector search criteria.</returns>
     public async Task<List<Recipe>> SingleVectorSearch(float[] vectors, double similarityScore)
     {
+        // Define the query to search for recipes based on the vector similarity score
         string queryText = @"SELECT Top 3 x.name,x.description, x.ingredients, x.cuisine,x.difficulty, x.prepTime,x.cookTime,x.totalTime,x.servings, x.similarityScore
                             FROM (SELECT c.name,c.description, c.ingredients, c.cuisine,c.difficulty, c.prepTime,c.cookTime,c.totalTime,c.servings,
                                 VectorDistance(c.vectors, @vectors, false) as similarityScore FROM c) x
                                     WHERE x.similarityScore > @similarityScore ORDER BY x.similarityScore desc";
 
+        // Define the query parameters
         var queryDef = new QueryDefinition(
                 query: queryText)
             .WithParameter("@vectors", vectors)
             .WithParameter("@similarityScore", similarityScore);
 
+        // Execute the query and retrieve the results
         using FeedIterator<Recipe> resultSet = _container.GetItemQueryIterator<Recipe>(queryDefinition: queryDef);
 
         List<Recipe> recipes = new List<Recipe>();
+
+        // Iterate through the results
         while (resultSet.HasMoreResults)
         {
             FeedResponse<Recipe> response = await resultSet.ReadNextAsync();
@@ -151,11 +173,15 @@ public class CosmosDbService
     /// </summary>
     public async Task<List<Recipe>> GetRecipesToVectorizeAsync()
     {
+        // Define the query to search for recipes that are not vectorized
         QueryDefinition query = new QueryDefinition("SELECT * FROM c WHERE IS_ARRAY(c.vectors)=false");
 
+
+        // Execute the query and retrieve the results
         FeedIterator<Recipe> results = _container.GetItemQueryIterator<Recipe>(query);
 
         List<Recipe> output = new();
+        // Iterate through the results
         while (results.HasMoreResults)
         {
             FeedResponse<Recipe> response = await results.ReadNextAsync();
@@ -169,11 +195,14 @@ public class CosmosDbService
     /// </summary>
     public async Task<List<Recipe>> GetRecipesAsync()
     {
+        // Define the query to search for all recipes
         QueryDefinition query = new QueryDefinition("SELECT * FROM c");
 
+        // Execute the query and retrieve the results
         FeedIterator<Recipe> results = _container.GetItemQueryIterator<Recipe>(query);
 
         List<Recipe> output = new();
+        // Iterate through the results
         while (results.HasMoreResults)
         {
             FeedResponse<Recipe> response = await results.ReadNextAsync();
@@ -187,6 +216,7 @@ public class CosmosDbService
     /// </summary>
     public async Task<int> GetRecipeCountAsync(bool withEmbedding)
     {
+        // Define the query to get Recipes count based on embeddings status
         QueryDefinition query = new QueryDefinition("SELECT value Count(c.id) FROM c WHERE IS_ARRAY(c.vectors)=@status")
             .WithParameter("@status", withEmbedding);
 
@@ -198,8 +228,14 @@ public class CosmosDbService
         return queryResultSet.FirstOrDefault();
     }
 
+    /// <summary>
+    /// Adds a list of recipes to the Cosmos DB container in bulk.
+    /// </summary>
+    /// <param name="recipes">The list of recipes to add.</param>
+    /// <returns>A task representing the asynchronous operation.</returns>
     public async Task AddRecipesAsync(List<Recipe> recipes)
     {
+        // Create a new BulkOperations instance to add recipes in bulk
         BulkOperations<Recipe> bulkOperations = new BulkOperations<Recipe>(recipes.Count);
         foreach (Recipe recipe in recipes)
         {
@@ -209,8 +245,14 @@ public class CosmosDbService
     }
 
 
+    /// <summary>
+    /// Updates the vectors of recipes in the Cosmos DB container in bulk.
+    /// </summary>
+    /// <param name="dictInput">A dictionary where the key is the recipe ID and the value is the vector to update.</param>
+    /// <returns>A task representing the asynchronous operation.</returns>
     public async Task UpdateRecipesAsync(Dictionary<string, float[]> dictInput)
     {
+        // Create a new BulkOperations instance to update recipes in bulk
         BulkOperations<Recipe> bulkOperations = new BulkOperations<Recipe>(dictInput.Count);
         foreach (KeyValuePair<string, float[]> entry in dictInput)
         {
@@ -218,7 +260,10 @@ public class CosmosDbService
         }
     }
 
-
+    /// <summary>
+    /// Class to handle bulk operations for a generic type T.
+    /// </summary>
+    /// <typeparam name="T">The type of the items being operated on.</typeparam>
     private class BulkOperations<T>
     {
         public readonly List<Task<OperationResponse<T>>> Tasks;
@@ -230,6 +275,11 @@ public class CosmosDbService
             this.Tasks = new List<Task<OperationResponse<T>>>(operationCount);
         }
 
+/// <summary>
+        /// Executes all the bulk operations and returns a summary of the results.
+        /// </summary>
+        /// <returns>A <see cref="BulkOperationResponse{T}"/> containing the results of the bulk operations.</returns>
+    
         public async Task<BulkOperationResponse<T>> ExecuteAsync()
         {
             await Task.WhenAll(this.Tasks);
@@ -244,7 +294,11 @@ public class CosmosDbService
         }
     }
 
-
+ /// <summary>
+    /// Represents the summary of the results of the bulk operations.
+    /// </summary>
+    /// <typeparam name="T">The type of the items being operated on.</typeparam>
+  
     public class BulkOperationResponse<T>
     {
         public TimeSpan TotalTimeTaken { get; set; }
@@ -254,6 +308,11 @@ public class CosmosDbService
         public IReadOnlyList<(T, Exception)>? Failures { get; set; }
     }
 
+/// <summary>
+    /// Represents the response of a single operation in the bulk operations.
+    /// </summary>
+    /// <typeparam name="T">The type of the item being operated on.</typeparam>
+  
     public class OperationResponse<T>
     {
         public T? Item { get; set; }
@@ -261,6 +320,14 @@ public class CosmosDbService
         public bool IsSuccessful { get; set; }
         public Exception? CosmosException { get; set; }
     }
+
+    /// <summary>
+    /// Captures the response of an operation and returns an <see cref="OperationResponse{T}"/> object.
+    /// </summary>
+    /// <typeparam name="T">The type of the item being operated on.</typeparam>
+    /// <param name="task">The task representing the operation.</param>
+    /// <param name="item">The item being operated on.</param>
+    /// <returns>An <see cref="OperationResponse{T}"/> object containing the result of the operation.</returns>
 
     private static async Task<OperationResponse<T>> CaptureOperationResponse<T>(Task<ItemResponse<T>> task, T item)
     {
