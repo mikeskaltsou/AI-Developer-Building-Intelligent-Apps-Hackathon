@@ -8,8 +8,6 @@ using Microsoft.Azure.Cosmos.Serialization.HybridRow.Schemas;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.Runtime.Intrinsics.X86;
 using Container = Microsoft.Azure.Cosmos.Container;
 using PartitionKey = Microsoft.Azure.Cosmos.PartitionKey;
 
@@ -92,16 +90,37 @@ public class CosmosDbService
         {
             ThroughputProperties throughputProperties = ThroughputProperties.CreateAutoscaleThroughput(1000);
 
-            ContainerProperties properties = null;
+            // Define new container properties including the vector indexing policy
+            ContainerProperties properties = new ContainerProperties(id: containerName, partitionKeyPath: "/id")
+            {
+                // Set the default time to live for cache items to 1 day
+                DefaultTimeToLive = 86400,
 
-            // Define new container properties including the vector embedding policy
-            // The vector embedding policy is used to define the vector embedding schema and indexing policy for the container
-            // Set the vector embedding policy path to /vectors, the data type to Float32, the distance function to Cosine, and the dimensions to 1536
-            // Set the indexing policy to use the QuantizedFlat vector index type on the /vectors path
-            // The vector indexing policy is used to index the vector data in the container
-            throw new NotImplementedException("Complete the code to create a Cosmos DB container with specified Container Vector Policy");            
-
-            //<Implement your code here>
+                // Define the vector embedding container policy
+                VectorEmbeddingPolicy = new(
+                new Collection<Embedding>(
+                [
+                    new Embedding()
+                {
+                    Path = "/vectors",
+                    DataType = VectorDataType.Float32,
+                    DistanceFunction = DistanceFunction.Cosine,
+                    Dimensions = 1536
+                }
+                ])),
+                IndexingPolicy = new IndexingPolicy()
+                {
+                    // Define the vector index policy
+                    VectorIndexes = new()
+                {
+                    new VectorIndexPath()
+                    {
+                        Path = "/vectors",
+                        Type = VectorIndexType.QuantizedFlat
+                    }
+                }
+                }
+            };
 
             // Create the container
             Container container = _database.CreateContainerIfNotExistsAsync(properties, throughputProperties).Result;
@@ -123,18 +142,11 @@ public class CosmosDbService
     /// <returns>A list of recipes that match the vector search criteria.</returns>
     public async Task<List<Recipe>> SingleVectorSearch(float[] vectors, double similarityScore)
     {
-
-        throw new NotImplementedException("Complete the vector query to search in the Vector DB");
-        // The query should use the VectorDistance() function to calculate the similarity score between the vectors in the container and the vectors parameter.
-        // Once you inserted vector data into the container, you can conduct a vector search using the Vector Distance system function in a query. 
-        // The Vector Distance function calculates the distance between two vectors and returns a similarity score between 0 and 1.
-        // The similarity score is calculated as 1 - distance. The closer the distance is to 0, the more similar the vectors are.
-        // The query should return the top 3 recipes that have a similarity score greater than or equal to the similarityScore parameter.
-        // The query should return the id, name, description, ingredients, cuisine, difficulty, prepTime, cookTime, totalTime, servings and similarityScore of the recipes.
-        // The query should be ordered by similarityScore and return the most relevant results first.
-
-        string queryText = @"";
-
+        // Define the query to search for recipes based on the vector similarity score
+        string queryText = @"SELECT Top 3 x.name,x.description, x.ingredients, x.cuisine,x.difficulty, x.prepTime,x.cookTime,x.totalTime,x.servings, x.similarityScore
+                            FROM (SELECT c.name,c.description, c.ingredients, c.cuisine,c.difficulty, c.prepTime,c.cookTime,c.totalTime,c.servings,
+                                VectorDistance(c.vectors, @vectors, false) as similarityScore FROM c) x
+                                    WHERE x.similarityScore > @similarityScore ORDER BY x.similarityScore desc";
 
         // Define the query parameters
         var queryDef = new QueryDefinition(

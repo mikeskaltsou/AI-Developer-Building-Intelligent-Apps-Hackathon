@@ -85,12 +85,20 @@ public class OpenAIService
     {
         try
         {
-            float[] embedding = null;
+            // Create embeddings options
+            EmbeddingsOptions embeddingsOptions = new()
+            {
+                DeploymentName = _openAIEmbeddingDeployment,
+                Input = { data },
+            };
 
-            //Complete the code to get the embeddings from Azure Open AI service
-            throw new NotImplementedException("Complete the code to get the embeddings from Azure Open AI service");
+            // Get embeddings
+            var response = await _openAIClient.GetEmbeddingsAsync(embeddingsOptions);
 
-            //<Implement your code here>
+            Embeddings embeddings = response.Value;
+
+            // Return embeddings as float array
+            float[] embedding = embeddings.Data[0].Embedding.ToArray();
 
             return embedding;
         }

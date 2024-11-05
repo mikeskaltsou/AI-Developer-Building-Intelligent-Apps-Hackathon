@@ -8,7 +8,7 @@ After using the Azure AI search as a vector store, you figure out that you can u
 
 A vector database is a database designed to store and manage vector embeddings for your records. These vector embeddings are used in similarity search and used as RAG to ground your db data with large languages models (LLMs).
 
-In a vector database, embeddings are indexed and queried through vector search algorithms based on their vector distance or similarity. A robust mechanism is necessary to identify the most relevant data.
+In a vector database, embeddings are indexed and queried through vector search algorithms based on their vector distance or similarity.
 
 ## Description
 
@@ -24,10 +24,28 @@ Here's a streamlined process for building a RAG application with Azure Cosmos DB
 
 - **Response Generation**: The LLM processes the data and generates a comprehensive response, which is then delivered to the user.
 
+In this challenge you are given a partially completed console application demo showcasing the usage of the RAG pattern for integrating Azure Open AI services with custom data in Azure Cosmos DB NoSQL API.
+
+The demo has the following high level tasks:
+- Create Cosmos DB container with vector embedding policy (partially completed)
+- Get the recipes stored in the database
+- Upload data from a [sample recipe dataset](./Resources/Challenge-05/DataSet/Recipe)
+- Vectorize the data uploaded (partially completed)
+- Perform a vector search and use LLM to generate responses (partially completed)
+
+
 You should complete the following tasks
-- Deploy CosmosDb by using this [script](./Resources/Challenge-05/DeployCosmosDb.ps1)
-- Assign RBAC data plane permissions on CosmosDB as shown [here](./Resources/Challenge-05/AssignRoleDefinition.ps1)
-- Open the solution in Visual Studio or Visual Studio code located [here](./Resources/Challenge-05/src) and make any necessary changes to meet the success criteria
+1. Deploy CosmosDb by using this [script](./Resources/Challenge-05/DeployCosmosDb.ps1)
+
+2. Ensure that you enable Vecto Search in Cosmos DB
+```bash
+# Ensure that you enable NoSQL Vector Search capability
+az cosmosdb update --resource-group $resourceGroup --name $cosmosDbAccountName  --capabilities EnableNoSQLVectorSearch
+```
+2. Open the solution in Visual Studio or Visual Studio code located [here](./Resources/Challenge-05/src) and make the following changes to meet the success criteria
+    - Make the necessary changes in CreateCosmosContainerAsync method
+    - Make the necessary changes in GetEmbeddingsAsync method
+    - Make the necessary changes in SingleVectorSearch method
 
 ## Success Criteria
 - Demonstrate that you have created the Cosmos DB database
@@ -38,6 +56,7 @@ You should complete the following tasks
 
 ## Learning Resources
 - [Retrieval Augmented Generation in Azure Cosmos DB | Microsoft Learn](https://learn.microsoft.com/en-us/azure/cosmos-db/gen-ai/rag)
+- [Index and query vector data in .NET - Azure Cosmos DB for NoSQL | Microsoft Learn](https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/how-to-dotnet-vector-index-query)
 - [Vector Search in Azure Cosmos DB for NoSQL | Microsoft Learn](https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/vector-search)
--[AzureDataRetrievalAugmentedGenerationSamples | GitHub](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples)
+- [AzureDataRetrievalAugmentedGenerationSamples | GitHub](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples)
 - [Configure role-based access control with Microsoft Entra ID - Azure Cosmos Db | Microsoft Learn](https://learn.microsoft.com/en-us/azure/cosmos-db/how-to-setup-rbac#built-in-role-definitions)
