@@ -3,12 +3,14 @@
  [< Previous Challenge](./Challenge-05.md) - **[Home](../README.md)** - [Next Challenge >](./Challenge-07.md)
  
 ## Introduction
-You are tasked by the CTO with converting natural language queries into SQL statements. The goal is to accurately translate the user's intent into SQL queries that retrieve the correct data from the database.
+The CTO is impressed with the results and the speed of implementation.
+
+You have been assigned by the CTO to convert natural language queries into SQL statements. The objective is to precisely translate the user's intent into SQL queries that accurately retrieve the necessary data from the database.
 
 ## Description
 In this challenge, you will practice converting natural language queries into SQL statements by using Semantic Kernel plugin. This exercise will help you understand how to translate user requests into precise SQL queries that can be executed on a database.
 
-For this challenge you should add the Database Schema to Azure Open Ai context window.  You can find the database schema from [here](./Resources/Challenge-06/dbschema.txt)
+For this challenge you should add the Database Schema to Azure Open Ai context window.  You can find the database schema [here](./Resources/Challenge-06/dbschema.txt)
 
 Semantic Kernel SDK supports a prompt templating language with some simple syntax rules. You don't need to write code or import any external libraries, just use the curly braces {{...}} to embed expressions in your prompts.
 
@@ -72,7 +74,7 @@ In the next challenge you will investigate alternative ways to optimize the solu
 
 ## Success Criteria
 - Demonstrate that you have created the "Natural language to SQL" Semantic Kernel Prompt Plugin
-- Demonstrate that you add the database schema in Azure Open Ai Context window and you set meaningful instructions to the bot.
+- Demonstrate that you add the database schema in Azure Open AI Context window and you set meaningful instructions to the bot.
 - Demonstrate that you can ask questions in natural language and you get responses with SQL queries.
 - Discuss with your coach the disadvantages of current solution and propose ways to optimize this.
 
