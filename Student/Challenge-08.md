@@ -36,7 +36,7 @@ You can create your functions like the example below
             return info;
         }
 ```
-You can find the database service and include it in your solution [here](./Resources/Challenge-08/dbschema.txt)
+You can find the database service and include it in your solution [here](./Resources/Challenge-08/DatabaseService.cs)
 
 ## Success Criteria
 - Demonstrate that you have deployed the Azure SQL database and you successfully import the Adventure Works sample database.
