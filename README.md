@@ -29,43 +29,43 @@ The intended audience comprises individuals who have coding skills.
 - Software Developers
 - Solution Architects
 
-## Day 1 Challenges
+## Challenges
 
 ---
 
-### Day 1 - Challenge 0: **[Setup and prepare Environment](Student/Challenge-00.md)**
+### Challenge 0: **[Setup and prepare Environment](Student/Challenge-00.md)**
 
 - Install the required development tools. This initial session is crucial to ensure that all participants are well-prepared and can fully engage with the workshop's content.
 
-### Day 1 - Challenge 1: **[Implement Retrieval Augmented Generation (RAG) with Azure OpenAI](Student/Challenge-01.md)**
+### Challenge 1: **[Implement Retrieval Augmented Generation (RAG) with Azure OpenAI](Student/Challenge-01.md)**
 
 - Dive into the world of RAG and learn how to enhance your AI applications by integrating Azure OpenAI’s capabilities. This session will guide you through the process of implementing RAG with Azure AI Search, enabling your applications to leverage external data sources for more grounded and contextually relevant responses.
 
-### Day 1 - Challenge 2: **[Use prompt flow to query on own data with Search AI.](Student/Challenge-02.md)**
+### Challenge 2: **[Use prompt flow to query on own data with Search AI.](Student/Challenge-02.md)**
 
 - Discover how to create a responsive QnA system using prompt flow, allowing for intuitive and efficient user interactions with your AI solutions.
 
-### Day 1 - Challenge 3: **[Start coding with Azure OpenAI SDK.](Student/Challenge-03.md)**
+### Challenge 3: **[Start coding with Azure OpenAI SDK.](Student/Challenge-03.md)**
 
 - Use Azure OpenAI SDK to start coding your intelligent apps.
 
-### Day 1 - Challenge 4: **[Use Semantic Kernel as an Orchestrator to create a basic intelligent app.](Student/Challenge-04.md)**
+### Challenge 4: **[Use Semantic Kernel as an Orchestrator to create a basic intelligent app.](Student/Challenge-04.md)**
 
 - Unlock the potential of Semantic Kernel in developing intelligent applications. Whether you prefer C# or Python, this session will provide you with the knowledge to incorporate Semantic Kernel into your applications, facilitating seamless integration of AI prompts with conventional programming languages for smarter, more responsive applications.
 
-## Day 2 Challenges
+### Challenge 5: **[Observability in Semantic Kernel](Student/Challenge-05.md)**
 
----
+- When you build AI solutions, you want to be able to observe the behavior of your services. Observability is the ability to monitor and analyze the internal state of components within a distributed system. It is a key requirement for building enterprise-ready AI solutions.
 
-### Day 2 - Challenge 5: **[Use Cosmos DB as a Vector DB.](Student/Challenge-05.md)**
+### Challenge 6: **[Use Cosmos DB as a Vector DB.](Student/Challenge-06.md)**
 
 - Use Cosmos DB as a Vector Database for grounding your own data. A vector database stores and manages vector embeddings for records, which are used in similarity search and Retrieval-Augmented Generation (RAG). CosmosDB allows you to store vectors directly in documents alongside traditional schema-free data, enabling efficient indexing and searching. This colocation of data and vectors simplifies data management, AI application architectures, and enhances the efficiency of vector-based operations.
 
-### Day 2 - Challenge 6: **[Basic Natural Language to SQL with Semantic Kernel](Student/Challenge-06.md)**
+### Challenge 7: **[Basic Natural Language to SQL with Semantic Kernel](Student/Challenge-07.md)**
 
 - Practice how to convert natural language queries into SQL statements by using Semantic Kernel .This challenge will help you understand how to translate user requests into precise SQL queries that can be executed on a database by passing the sql schema into LLM context window.
 
-### Day 2 - Challenge 7: **[Advanced Natural Language to SQL with Semantic Kernel with RAG](Student/Challenge-07.md)**
+### Challenge 8: **[Advanced Natural Language to SQL with Semantic Kernel with RAG](Student/Challenge-08.md)**
 
 - After completing the basic scenario of converting natural language to SQL queries, the next step is to optimise the solution by implementing the RAG pattern. This involves not passing the entire SQL schema in the LLM context. Instead, you will use the Semantic Kernel's ability to decide which table schemas to include. Additionally, you will enable the Semantic Kernel to execute SQL queries and display the results to the user. Finally, you will add observability to your solution.
 

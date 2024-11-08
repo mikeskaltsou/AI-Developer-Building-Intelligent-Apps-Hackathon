@@ -1,55 +1,84 @@
-# Challenge 07 - Advanced NL to SQL with semantic kernel by implementing RAG pattern via API calls to retrieve database schema
+# Challenge 07 - Basic NL to SQL with semantic kernel.
 
- [< Previous Challenge](./Challenge-06.md) - **[Home](../README.md)**
+ [< Previous Challenge](./Challenge-06.md) - **[Home](../README.md)** - [Next Challenge >](./Challenge-08.md)
  
 ## Introduction
-After completing the previous basic scenario of converting natural language to SQL queries now it's time to take it a step further and optimize your solution. In this challenge you will be implementing RAG pattern, so you are not passing the whole sql schema in LLM context. You will leverage the Semantic Kernel ability to decide what table schemas to include in LLM context. You will also enable Semantic Kernel to execute the SQL queries and display the results to the user. Finally you will add observability to your solution.process.
+The CTO is impressed with the results and the speed of implementation.
+
+You have been assigned by the CTO to convert natural language queries into SQL statements. The objective is to precisely translate the user's intent into SQL queries that accurately retrieve the necessary data from the database.
 
 ## Description
-In the previous you practice how to convert natural language queries into SQL statements by using Semantic Kernel prompt plugin by passing the SQL schema into LLm context. 
+In this challenge, you will practice converting natural language queries into SQL statements by using Semantic Kernel plugin. This exercise will help you understand how to translate user requests into precise SQL queries that can be executed on a database.
 
-You will be given a sample database (Adventure Works) and you should issue the SQL statements based on the database schema. You can find the scripts to deploy the database in Azure [here](./Resources/Challenge-07/deploy-sql.azcli)
+For this challenge you should add the Database Schema to Azure Open Ai context window.  You can find the database schema [here](./Resources/Challenge-07/dbschema.txt)
 
-Create a plugin with the following functions. Please provide the semantic descriptions of the functions and parameters so the AI agent can understand them. Once you describe the functions and parameters, you enable Semantic Kernel Auto Invocation to make the right decisions and call the functions automatically based on the semantic meaning of your intent.
-- **Get database Info** -> Get the Database description
-- **Get database Schema Info** -> Get the Database schemas with their descriptions
-- **Get Database Schema Table Info** -> Get the Database tables with their descriptions for specific schema
-- **Get Database Schema Table Columns Info** -> Get the Database columns with their schema information for specific schema and table
-- **Execute Sql Command** -> Execute sql command and display results, show only the first 10 rows use only read operations, never update or delete anything from database
+Semantic Kernel SDK supports a prompt templating language with some simple syntax rules. You don't need to write code or import any external libraries, just use the curly braces {{...}} to embed expressions in your prompts.
 
-You can create your functions like the example below
+To create a semantic plugin, you need a folder containing two files: a skprompt.txt file and a config.json file. The skprompt.txt file contains the prompt to the large language model (LLM), similar to all the prompts you wrote so far. The config.json file contains the configuration details for the prompt.
 
-```csharp
-        //Initialize the database service
-        DatabaseService db = new DatabaseService("<add you data source, i.e nl-to-sql.database.windows.net>", "<SQL user name>", "<SQL password>", "<database Name>");
+The config.json file supports the following parameters:
+- type: The type of prompt. You typically use the chat completion prompt type.
+- description: A description of what the prompt does. This description can be used by the kernel to automatically invoke the prompt.
+- input_variables: Defines the variables that are used inside of the prompt.
+- execution_settings: The settings for completion models. For OpenAI models, these settings include the max_tokens and temperature properties.
 
+To create this plugin, you would first create a 'Prompts' folder in your project, then a subfolder called 'BasicNLtoSQL.' Afterwards, you add the 'skprompt.txt' and 'config.json' files to your 'BasicNLtoSQL' folder.
 
-        /// <summary>
-        /// Get the database tables with their descriptions for a specific schema.
-        /// </summary>
-        /// <param name="schemaName">The name of the schema.</param>
-        /// <returns>A list of <see cref="TableInfo"/> objects representing the database table information.</returns>
-        [KernelFunction, Description("Get the Database tables with their descriptions for specific schema")]
-        public List<TableInfo> GetDatabaseSchemaTableInfo([Description("The schema name")] string schemaName)
-        {
-            var info = dbService.GetTableSchemaInfo(schemaName);
-            return info;
-        }
+Example of 'skprompt.txt' file:
+
+```code
+Given the SQL schema and a query in natural language, you have to format the query into a single valid SQL statement.
+
+{{$sqlSchema}}
+
+User Input
+{{$input}}
 ```
-You can find the database service and include it in your solution [here](./Resources/Challenge-07/dbschema.txt)
 
-After creating the plugin you should export the telemetry data to Application Insights, and inspect the data in the Application Insights portal.
+The config.json file shall include the following configuration. Based on the  prompt(in skprompt.txt) there is a missing part in the following configuration which you may add.
+``` json
+{
+  "schema": 1,
+  "name": "BasicNLtoSQL",
+  "description": "Natural Language to SQL",
+  "type": "completion",
+  "execution_settings": {
+    "default": {
+      "max_tokens": 1024,
+      "temperature": 0,
+      "top_p": 0,
+      "presence_penalty": 0,
+      "frequency_penalty": 0
+    }
+  },
+  "input_variables": [
+    {
+      "name": "input",
+      "description": "The question to answer",
+      "required": true
+    }
+  ]
+}
+```
+
+You should add your plugin by importing from prompt directory like
+```csharp
+kernel.ImportPluginFromPromptDirectory("Prompts");
+```
+You should invoke the plugin with the following code
+```csharp
+var result =  kernel.InvokeStreamingAsync("Prompts", "BasicNLtoSQL", new() { { "input", userInput },{ "sqlSchema", sqlSchema } } );
+```
+
+In the next challenge you will investigate alternative ways to optimize the solution. Discuss with your coach potential optimizations.
 
 ## Success Criteria
-- Demonstrate that you have deployed the Azure SQL database and you successfully import the Adventure Works sample database.
-- Demonstrate that you have created the plugin with all necessary functions. The functions shall use the methods provided in Database Service.
-- Demonstrate that you can ask questions in natural language and you get the answers with the actual data.
-- Demonstrate that you can see the telemetry in Application insights of the application.
-- Explain to your coach how the Function calling with chat completion works
-- Explain to your coach how the Auto Function Invocation works
+- Demonstrate that you have created the "Natural language to SQL" Semantic Kernel Prompt Plugin
+- Demonstrate that you add the database schema in Azure Open AI Context window and you set meaningful instructions to the bot.
+- Demonstrate that you can ask questions in natural language and you get responses with SQL queries.
+- Discuss with your coach the disadvantages of current solution and propose ways to optimize this.
 
 ## Learning Resources
-- [Provide native code to your agents | Microsoft Learn](https://learn.microsoft.com/en-us/semantic-kernel/concepts/plugins/adding-native-plugins?pivots=programming-language-csharp)
-- [Inspection of telemetry data with Application Insights | Microsoft Learn](https://learn.microsoft.com/en-us/semantic-kernel/concepts/enterprise-readiness/observability/telemetry-with-app-insights?tabs=Powershell&pivots=programming-language-csharp)
-- (Auto Function Invocation | Microsoft Learn)[https://learn.microsoft.com/en-us/semantic-kernel/concepts/ai-services/chat-completion/function-calling/function-invocation?pivots=programming-language-csharp#auto-function-invocation]
-- (Function calling with chat completion | Microsoft Learn)[https://learn.microsoft.com/en-us/semantic-kernel/concepts/ai-services/chat-completion/function-calling/?pivots=programming-language-csharp]
+- [Create an Agent from a Semantic Kernel Template (Experimental) | Microsoft Learn](https://learn.microsoft.com/en-us/semantic-kernel/frameworks/agent/agent-templates?pivots=programming-language-csharp#agent-definition-from-a-prompt-template)
+- [PromptTemplateConfig Class (Microsoft.SemanticKernel) | Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/api/microsoft.semantickernel.prompttemplateconfig?view=semantic-kernel-dotnet)
+- [Save prompts to files - Training | Microsoft Learn](https://learn.microsoft.com/en-us/training/modules/create-plugins-semantic-kernel/7-save-prompts-files)

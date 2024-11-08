@@ -1,64 +1,36 @@
-# Challenge 05 - Use Cosmos DB as a Vector DB
+# Challenge 05 - Observability in Semantic Kernel
 
  [< Previous Challenge](./Challenge-04.md) - **[Home](../README.md)** - [Next Challenge >](./Challenge-06.md)
  
 ## Introduction
 
-After using the Azure AI search as a vector store, you figure out that you can use a Vector Database like CosmosDB for grounding your own data.
+After implementing your first Semantic Kernel intelligent app, it's time to add observability into your application.
 
-A vector database is a database designed to store and manage vector embeddings for your records. These vector embeddings are used in similarity search and used as RAG to ground your db data with large languages models (LLMs).
-
-In a vector database, embeddings are indexed and queried through vector search algorithms based on their vector distance or similarity.
+When you build AI solutions, you want to be able to observe the behavior of your services. Observability is the ability to monitor and analyze the internal state of components within a distributed system. It is a key requirement for building enterprise-ready AI solutions.
 
 ## Description
 
-With Cosmos DB, you can store vectors directly in the documents alongside your data. Each document in your database can contain not only traditional schema-free data, but also high-dimensional vectors as other properties of the documents. This colocation of data and vectors allows for efficient indexing and searching, as the vectors are stored in the same logical unit as the data they represent. Keeping vectors and data together simplifies data management, AI application architectures, and the efficiency of vector-based operations
+Observability is typically achieved through logging, metrics, and tracing. They are often referred to as the three pillars of observability. You will also hear the term "telemetry" used to describe the data collected by these three pillars. Unlike debugging, observability provides an ongoing overview of the system's health and performance.
 
-Here's a streamlined process for building a RAG application with Azure Cosmos DB:
+Semantic Kernel is designed to be observable. It emits logs, metrics, and traces that are compatible to the OpenTelemetry standard. 
+You can use the following observability tools to monitor and analyze the behavior of your services built on Semantic Kernel.
+- [Console](https://learn.microsoft.com/en-us/semantic-kernel/concepts/enterprise-readiness/observability/telemetry-with-console?tabs=Powershell-CreateFile%2CEnvironmentFile&pivots=programming-language-csharp)
+- [Application Insights](https://learn.microsoft.com/en-us/semantic-kernel/concepts/enterprise-readiness/observability/telemetry-with-app-insights?tabs=Powershell&pivots=programming-language-csharp)
+- [Aspire Dashboard](https://learn.microsoft.com/en-us/semantic-kernel/concepts/enterprise-readiness/observability/telemetry-with-aspire-dashboard?tabs=Powershell&pivots=programming-language-csharp)
 
-- **Data Ingestion**: Store your documents, images, and other content types in Azure Cosmos DB. Utilize the database's support for vector search to index and retrieve vectorized content.
+Specifically, Semantic Kernel provides the following observability features:
+- Logging: Semantic Kernel logs meaningful events and errors from the kernel, kernel plugins and functions, as well as the AI connectors.
+- Metrics: Semantic Kernel emits metrics from kernel functions and AI connectors. You will be able to monitor metrics such as the kernel function execution time, the token consumption of AI connectors, etc.
+- Tracing: Semantic Kernel supports distributed tracing. You can track activities across different services and within Semantic Kernel.
 
-- **Query Execution**: When a user submits a query, Azure Cosmos DB can quickly retrieve the most relevant data using its vector search capabilities.
-
-- **LLM Integration**: Pass the retrieved data to an LLM (e.g., Azure OpenAI) to generate a response. The well-structured data provided by Cosmos DB enhances the quality of the model's output.
-
-- **Response Generation**: The LLM processes the data and generates a comprehensive response, which is then delivered to the user.
-
-In this challenge you are given a partially completed console application demo showcasing the usage of the RAG pattern for integrating Azure Open AI services with custom data in Azure Cosmos DB NoSQL API.
-
-The demo has the following high level tasks:
-- Create Cosmos DB container with vector embedding policy (partially completed)
-- Get the recipes stored in the database
-- Upload data from a [sample recipe dataset](./Resources/Challenge-05/DataSet/Recipe)
-- Vectorize the data uploaded (partially completed)
-- Perform a vector search and use LLM to generate responses (partially completed)
-
-
-You should complete the following tasks
-1. Deploy CosmosDb by using this [script](./Resources/Challenge-05/DeployCosmosDb.ps1)
-
-2. Ensure that you enable Vector Search in Cosmos DB
-```bash
-# Ensure that you enable NoSQL Vector Search capability
-az cosmosdb update --resource-group $resourceGroup --name $cosmosDbAccountName  --capabilities EnableNoSQLVectorSearch
-```
-2. Open the solution in Visual Studio or Visual Studio code located [here](./Resources/Challenge-05/src) and make the following changes to meet the success criteria
-    - Make the necessary changes in CreateCosmosContainerAsync method
-    - Make the necessary changes in GetEmbeddingsAsync method
-    - Make the necessary changes in SingleVectorSearch method
-
-In case you are not familiar with .NET, you can use in the [Azure Data Retrieval Augmented Generation Samples](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples) the CosmosDB-NoSQL_VectorSearch sample for [Java](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/Java/CosmosDB-NoSQL-VectorSearch) or [Python](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/blob/main/Python/CosmosDB-NoSQL_VectorSearch/CosmosDB-NoSQL-Vector_AzureOpenAI_Tutorial.ipynb).
+You should incorporate observability into your application using Application Insights or Aspire Dashboard. Use the application created in the previous challenge.
 
 ## Success Criteria
-- Demonstrate that you have created the Cosmos DB database
-- Demonstrate that you push the sample data into Cosmos DB
-- Demonstrate that you vectorize the sample data into Cosmos DB.
-- Demonstrate that you can ask questions on recipes and get responses on your own data stored in Cosmos DB
-- Explain to your coach the main differences of Azure AI Search and CosmosDB used as vector Database
+- Ensure that your application is running and you apply observability with Application inisghts or with Apsire Dashboard
+- Inspect the telemetry data by navigating to logs and traces and observe the sequence of calls.
+- Demonstrate that you can see through the telemetry the content and history sent to the LLM calls.
 
 ## Learning Resources
-- [Retrieval Augmented Generation in Azure Cosmos DB | Microsoft Learn](https://learn.microsoft.com/en-us/azure/cosmos-db/gen-ai/rag)
-- [Index and query vector data in .NET - Azure Cosmos DB for NoSQL | Microsoft Learn](https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/how-to-dotnet-vector-index-query)
-- [Vector Search in Azure Cosmos DB for NoSQL | Microsoft Learn](https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/vector-search)
-- [AzureDataRetrievalAugmentedGenerationSamples | GitHub](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples)
-- [Configure role-based access control with Microsoft Entra ID - Azure Cosmos Db | Microsoft Learn](https://learn.microsoft.com/en-us/azure/cosmos-db/how-to-setup-rbac#built-in-role-definitions)
+- [Observability in Semantic Kernel | Microsoft Learn](https://learn.microsoft.com/en-us/semantic-kernel/concepts/enterprise-readiness/observability/?pivots=programming-language-csharp)
+- [Inspection of telemetry data with Application Insights | Microsoft Learn](https://learn.microsoft.com/en-us/semantic-kernel/concepts/enterprise-readiness/observability/telemetry-with-app-insights?tabs=Powershell&pivots=programming-language-csharp)
+- [Inspection of telemetry data with Aspire Dashboard | Microsoft Learn](https://learn.microsoft.com/en-us/semantic-kernel/concepts/enterprise-readiness/observability/telemetry-with-aspire-dashboard?tabs=Powershell&pivots=programming-language-csharp)
