@@ -54,11 +54,12 @@ In case you are not familiar with .NET, you can use in the [Azure Data Retrieval
 - Demonstrate that you push the sample data into Cosmos DB
 - Demonstrate that you vectorize the sample data into Cosmos DB.
 - Demonstrate that you can ask questions on recipes and get responses on your own data stored in Cosmos DB
-- Explain to your coach the main differences of Azure AI Search and CosmosDB used as vector Database
+- Explain to your coach the main differences of Azure AI Search and CosmosDB used as vector database
 
 ## Learning Resources
-- [Retrieval Augmented Generation in Azure Cosmos DB | Microsoft Learn](https://learn.microsoft.com/en-us/azure/cosmos-db/gen-ai/rag)
 - [Index and query vector data in .NET - Azure Cosmos DB for NoSQL | Microsoft Learn](https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/how-to-dotnet-vector-index-query)
+- [How to generate embeddings with Azure OpenAI Service - Azure OpenAI | Microsoft Learn](https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/embeddings?tabs=csharp#how-to-get-embeddings)
+- [Retrieval Augmented Generation in Azure Cosmos DB | Microsoft Learn](https://learn.microsoft.com/en-us/azure/cosmos-db/gen-ai/rag)
 - [Vector Search in Azure Cosmos DB for NoSQL | Microsoft Learn](https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/vector-search)
 - [AzureDataRetrievalAugmentedGenerationSamples | GitHub](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples)
 - [Configure role-based access control with Microsoft Entra ID - Azure Cosmos Db | Microsoft Learn](https://learn.microsoft.com/en-us/azure/cosmos-db/how-to-setup-rbac#built-in-role-definitions)
