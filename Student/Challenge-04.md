@@ -16,6 +16,8 @@ This challenge will guide you through the process of developing your first intel
 
 In just a few steps, you can build your first AI agent with Semantic Kernel in either Python, .NET, or Java.
 
+### Light Bulb interaction plugin
+
 As a starting point you can follow the steps below to start development with Semantic Kernel. In this .NET console application example, you will create a plugin, allowing the AI agent to interact with a light bulb.
 
 If you are not familiar enough with .NET you can use the supported programming language (Python or Java) of your preference.
@@ -65,7 +67,7 @@ Kernel kernel = builder.Build();
 // Retrieve the chat completion service
 var chatCompletionService = kernel.Services.GetRequiredService<IChatCompletionService>();
 ```
-Add plugins. With plugins, you can give your AI agent the ability to run your code to retrieve information from external sources or to perform actions. In the above example, we added a plugin that allows the AI agent to interact with a light bulb. You can place your Plugins in a separate folder
+Add plugins. With plugins, you can give your AI agent the ability to run your code to retrieve information from external sources or to perform actions. In the above example, we added a plugin that allows the AI agent to interact with a light bulb. You should place your Plugins in a separate folder.
 In your own code, you can create a plugin that interacts with any external service or API to achieve similar results.
 
 A good practice to structure your Plugins in the project is like this:
@@ -158,6 +160,7 @@ executionSettings: openAIPromptExecutionSettings,
 kernel: kernel
 );
 ```
+### RAG pattern with Azure AI search plugin
 
 After completing the above plugin you should create a [plugin to retrieve data from external source](https://learn.microsoft.com/en-us/semantic-kernel/concepts/plugins/using-data-retrieval-functions-for-rag) such us Azure AI Search and generate grounded responses with semantic search. Use the AI Search data source you created in previous challenges.
 
