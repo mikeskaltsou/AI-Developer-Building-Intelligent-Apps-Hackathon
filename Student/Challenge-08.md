@@ -1,6 +1,6 @@
 # Challenge 08 - Advanced NL to SQL with semantic kernel by implementing RAG pattern via API calls to retrieve database schema
 
- [< Previous Challenge](./Challenge-07.md) - **[Home](../README.md)**
+ [< Previous Challenge](./Challenge-07.md) - **[Home](../README.md)** - [Next Challenge >](./Challenge-09.md)
  
 ## Introduction
 After completing the initial task of converting natural language to SQL queries, you will now optimize your solution. In this challenge, you will implement the RAG pattern, avoiding the need to pass the entire SQL schema into the LLM context. You will utilize the Semantic Kernel's ability to determine which table schemas to include in the LLM context. Additionally, you will enable the Semantic Kernel to execute SQL queries and display the results to the user.
