@@ -3,7 +3,7 @@
  [< Previous Challenge](./Challenge-07.md) - **[Home](../README.md)**
  
 ## Introduction
-After completing the initial task of converting natural language to SQL queries, you will now optimize your solution. In this challenge, you will implement the RAG pattern, avoiding the need to pass the entire SQL schema into the LLM context. You will utilize the Semantic Kernel's ability to determine which table schemas to include in the LLM context. Additionally, you will enable the Semantic Kernel to execute SQL queries and display the results to the user. Lastly, you will add observability to your solution process.
+After completing the initial task of converting natural language to SQL queries, you will now optimize your solution. In this challenge, you will implement the RAG pattern, avoiding the need to pass the entire SQL schema into the LLM context. You will utilize the Semantic Kernel's ability to determine which table schemas to include in the LLM context. Additionally, you will enable the Semantic Kernel to execute SQL queries and display the results to the user.
 
 ## Description
 In the previous exercise, you practiced converting natural language queries into SQL statements by using the Semantic Kernel prompt plugin, passing the SQL schema into the LLM context.
@@ -15,7 +15,7 @@ Create a plugin with the following functions. Please provide the semantic descri
 - **Get database Schema Info** -> Get the Database schemas with their descriptions
 - **Get Database Schema Table Info** -> Get the Database tables with their descriptions for specific schema
 - **Get Database Schema Table Columns Info** -> Get the Database columns with their schema information for specific schema and table
-- **Execute Sql Command** -> Execute sql command and display results, show only the first 10 rows use only read operations, never update or delete anything from database
+- **Execute Sql Command** -> Execute sql command and display results, show only the first 10 rows, use only read operations, never update or delete anything in the database
 
 You can create your functions like the example below
 
@@ -42,7 +42,6 @@ You can find the database service and include it in your solution [here](./Resou
 - Demonstrate that you have deployed the Azure SQL database and you successfully import the Adventure Works sample database.
 - Demonstrate that you have created the plugin with all necessary functions. The functions shall use the methods provided in Database Service.
 - Demonstrate that you can ask questions in natural language and you get the answers with the actual data.
-- Demonstrate that you can see the telemetry in Application insights or Aspire Dashboard.
 - Explain to your coach how the Function calling with chat completion works.
 - Explain to your coach how the Auto Function Invocation works.
 
