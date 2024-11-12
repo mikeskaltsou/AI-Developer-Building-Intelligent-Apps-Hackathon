@@ -22,7 +22,7 @@ You should identify and describe five examples of intelligent applications that 
 ## Success Criteria
 - Discuss with your coach the problem or opportunity your application addresses.
 - Discuss with your coach the functionality of your intelligent application.
-- Showcase the potential impact and benefits of your application in the chosen industry.
+- Discuss with your coach the potential impact and benefits of your application in the chosen industry.
 
 ## Learning Resources
 - [AI in Action | Microsoft](https://news.microsoft.com/ai-in-action)
