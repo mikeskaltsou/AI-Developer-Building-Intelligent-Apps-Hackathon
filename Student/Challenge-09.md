@@ -1,4 +1,4 @@
-# Challenge 09 - Identify Real world usage of intelligent applications
+# Challenge 09 - Identify real world usage of intelligent applications
 
  [< Previous Challenge](./Challenge-08.md) - **[Home](../README.md)** - [Next Challenge >](./Challenge-10.md)
  
