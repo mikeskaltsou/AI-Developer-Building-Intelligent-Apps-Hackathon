@@ -1,4 +1,4 @@
-# Challenge 08 - Advanced NL to SQL with semantic kernel by implementing RAG pattern via API calls to retrieve database schema
+# Challenge 08 - Advanced Natural Language to SQL with Semantic Kernel and RAG
 
  [< Previous Challenge](./Challenge-07.md) - **[Home](../README.md)** - [Next Challenge >](./Challenge-09.md)
  

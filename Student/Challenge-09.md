@@ -1,4 +1,4 @@
-# (Optional) Challenge 09 - Host your NL to SQL solution as a web chatbot
+# (Optional) Challenge 09 - Natural Language to SQL as a web chatbot
 
  [< Previous Challenge](./Challenge-08.md) - **[Home](../README.md)**
  

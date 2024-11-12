@@ -8,9 +8,10 @@ This workshop requires two full days to finish depending on the attendees' skill
 Upon completing the workshop, participants will be able to:
 - Understand the fundamentals of Retrieval Augmented Generation (RAG) and its implementation using Azure OpenAI.
 - Integrate Azure AI Search with RAG to enhance AI applications with contextually relevant data.
-- Design and build a QnA copilot system utilizing prompt flow in Azure AI Studio for efficient user interaction.
+- Design and build a copilot system utilizing prompt flow in Azure AI Studio for efficient user interaction.
 - Develop intelligent applications using Azure Open AI SDK.
 - Develop intelligent applications using Semantic Kernel in either C# or Python, incorporating AI prompts seamlessly.
+- Develop a Natural Language to SQL intelligent application.
 - Apply the learned concepts to create innovative solutions that address real-world challenges using Azure OpenAI.
   
 ## Prerequisites
@@ -24,7 +25,7 @@ Upon completing the workshop, participants will be able to:
 - Latest version of Visual Studio or Visual Studio Code
 
 ## Target Audience
-The intended audience comprises individuals who have coding skills.
+The intended audience are individuals with coding skills.
 - AI Engineers
 - Software Developers
 - Solution Architects
@@ -39,7 +40,7 @@ The intended audience comprises individuals who have coding skills.
 
 ### Challenge 1: **[Implement Retrieval Augmented Generation (RAG) with Azure OpenAI](Student/Challenge-01.md)**
 
-- Dive into the world of RAG and learn how to enhance your AI applications by integrating Azure OpenAI’s capabilities. This session will guide you through the process of implementing RAG with Azure AI Search, enabling your applications to leverage external data sources for more grounded and contextually relevant responses.
+- Dive into the world of RAG and learn how to enhance your AI applications by integrating Azure OpenAI’s capabilities. This session will guide you through the process of implementing RAG with Azure AI Search, enabling your applications to leverage external data sources for grounded and contextually relevant responses.
 
 ### Challenge 2: **[Use prompt flow to query on own data with Search AI.](Student/Challenge-02.md)**
 
@@ -47,7 +48,7 @@ The intended audience comprises individuals who have coding skills.
 
 ### Challenge 3: **[Start coding with Azure OpenAI SDK.](Student/Challenge-03.md)**
 
-- Use Azure OpenAI SDK to start coding your intelligent apps.
+- Use Azure OpenAI SDK to start coding your intelligent apps. The Azure OpenAI SDK is a set of client libraries that allows developers to interact with Azure AI Services. This service provides access to powerful foundational models, with the security and enterprise capabilities of Azure.
 
 ### Challenge 4: **[Use Semantic Kernel as an Orchestrator to create a basic intelligent app.](Student/Challenge-04.md)**
 
@@ -65,13 +66,13 @@ The intended audience comprises individuals who have coding skills.
 
 - Practice how to convert natural language queries into SQL statements by using Semantic Kernel .This challenge will help you understand how to translate user requests into precise SQL queries that can be executed on a database by passing the sql schema into LLM context window.
 
-### Challenge 8: **[Advanced Natural Language to SQL with Semantic Kernel with RAG](Student/Challenge-08.md)**
+### Challenge 8: **[Advanced Natural Language to SQL with Semantic Kernel and RAG](Student/Challenge-08.md)**
 
-- After completing the basic scenario of converting natural language to SQL queries, the next step is to optimise the solution by implementing the RAG pattern. This involves not passing the entire SQL schema in the LLM context. Instead, you will use the Semantic Kernel's ability to decide which table schemas to include. Additionally, you will enable the Semantic Kernel to execute SQL queries and display the results to the user. Finally, you will add observability to your solution.
+- After completing the basic scenario of converting natural language to SQL queries, the next step is to optimise the solution by implementing the RAG pattern. This involves not passing the entire SQL schema in the LLM context. Instead, you will use the Semantic Kernel's ability to decide which table schemas to include. Additionally, you will enable the Semantic Kernel to execute SQL queries and display the results to the user.
 
-### (Optional) Challenge 9: **[Host your NL to SQL solution as a web chatbot](Student/Challenge-09.md)**
+### (Optional) Challenge 9: **[Natural Language to SQL as a web chatbot](Student/Challenge-09.md)**
 
-- Are you feeling too comfortable and eager to do more? This additional challenge will push your skills further by deploying your Nl to SQL application to Azure as a web chatbot.
+- Are you feeling too comfortable and eager to do more? This additional challenge will push your skills further by deploying your NL to SQL application to Azure as a web chatbot.
 
 ## References
 - [Create a project and use the chat playground in Azure AI Studio - Azure AI Studio | Microsoft Learnage](https://learn.microsoft.com/en-us/azure/ai-studio/quickstarts/get-started-playground)

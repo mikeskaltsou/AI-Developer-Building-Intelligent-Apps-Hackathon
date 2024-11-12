@@ -5,7 +5,9 @@
 ## Introduction
 After completing the prompt flow challenge, it's time to start investigating, how you can write code to utilize the AI services.
 
-The Azure OpenAI library configures a client for use with Azure OpenAI and provides additional strongly typed extension support for request and response models specific to Azure OpenAI scenarios.
+The Azure OpenAI SDK is a set of client libraries that allows developers to interact with Azure AI Services. This service provides access to powerful foundational models, with the security and enterprise capabilities of Azure.
+
+The SDK simplifies the process of connecting to the Azure OpenAI Service and provides additional strongly typed extension support for request and response models specific to Azure OpenAI scenarios. It’s a powerful tool for developers looking to leverage OpenAI’s models within the Azure ecosystem.
 
 ## Description
 Now you’ll dive into .NET Core development by creating a simple console application and use your own data with Azure OpenAI models created in previous challenge.
