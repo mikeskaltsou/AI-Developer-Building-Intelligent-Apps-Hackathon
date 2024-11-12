@@ -4,14 +4,20 @@
  
 ## Introduction
 
-You are a Cloud Solution Architect at Contoso. Recently, the CTO requested you to start investigating how to integrate Azure AI services into the existing applications. As part of this initiative, you will be focusing on implementing Retrieval Augmented Generation (RAG) with Azure OpenAI. Since Contoso is a proud partner with Microsoft, you have the opportunity to leverage cutting-edge AI technologies and figure out how to add intelligence into your applications.
+You are a Cloud Solution Architect at Contoso. Recently, the CTO requested you to start investigating how to integrate Azure AI services into the existing applications. 
+
+As part of this initiative, you will be focusing on implementing Retrieval Augmented Generation (RAG) with Azure OpenAI. 
+
+Since Contoso is a proud partner with Microsoft, you have the opportunity to leverage cutting-edge AI technologies and figure out how to add intelligence into your applications.
 
 
 ## Description
 
 As an architect, you have conducted a thorough research and developed a comprehensive plan to achieve your  goals by leveraging Azure AI Studio and deploying an Enterprise Chat web app. 
+
 To begin, you will create a project in Azure AI Studio and deploy an Azure OpenAI model. This will allow you to chat in the playground without using your own data, ensuring a smooth initial setup. 
 Once confirmed, you will add your own data to the model and conduct testing to ensure it performs accurately with your specific information. 
+
 Finally, you will deploy the web app, providing a robust and interactive chat solution tailored to your needs.
 This structured approach ensures that each step is carefully designed, leading to a successful implementation.
 

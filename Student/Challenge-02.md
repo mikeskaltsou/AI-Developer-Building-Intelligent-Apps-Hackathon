@@ -21,11 +21,14 @@ You will use generative AI and prompt flow UI to build, configure, and deploy a 
 The copilot should answer questions about your products and services. For example, the copilot can answer questions such as "How much do the TrailWalker hiking shoes cost?"
 
 You should complete the following steps
-- Create a prompt flow from the playground
+- Create a prompt flow from the playground.
 - Customize prompt flow and ground your data created in previous challenge.
 - Evaluate the flow using a question and answer evaluation dataset.
 - Deploy the flow for consumption.
 - Evaluate the deployed flow with your prefered metrics
+
+> [!NOTE]
+> Create the prompt flow from the playground to avoid creating the flow from scratch. By doing this, the playground setup will be exported to prompt flow.
 
 You can find the sample product information data used in previous challenge [here](./Resources/Challenge-01/Data/product-info)
 
