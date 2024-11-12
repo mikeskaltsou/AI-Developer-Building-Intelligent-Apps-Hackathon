@@ -10,6 +10,8 @@ Semantic Kernel is a lightweight, open-source development kit that lets you easi
 
 It combines prompts with existing APIs to perform actions. By describing your existing code to AI models, they’ll be called to address requests. When a request is made the model calls a function, and Semantic Kernel is the middleware translating the model's request to a function call and passes the results back to the model.
 
+![image](../Resources/Images/functioncalling.png)
+
 ## Description
 
 This challenge will guide you through the process of developing your first intelligent app with Semantic Kernel.
@@ -167,8 +169,6 @@ After completing the above plugin you should create a [plugin to retrieve data f
 Semantic search utilizes vector databases to understand and retrieve information based on the meaning and context of the query rather than just matching keywords.
 
 Semantic search excels in environments where user queries are complex, open-ended, or require a deeper understanding of the content. For example, searching for "best smartphones for photography" would yield results that consider the context of photography features in smartphones, rather than just matching the words "best," "smartphones," and "photography."
-
-![image](../Resources/Images/functioncalling.png)
 
 Add the Azure.Search.Documents package
 ```bash
