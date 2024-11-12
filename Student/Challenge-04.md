@@ -30,13 +30,13 @@ In a console window use the dotnet new command to create a new console app.
 dotnet new console -n azure-semantic-kernel-sdk-hackathon
 ```
 
-Install the SDK and add Logging package
+**Install the SDK and add Logging package**
 ```bash
 dotnet add package Microsoft.SemanticKernel
 dotnet add package  Microsoft.Extensions.Logging.Console
 ```
 
-Import packages
+**Import packages**
 ```csharp
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.ChatCompletion;
@@ -45,14 +45,14 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 ```
 
-Add AI services
+**Add AI services**
 ```csharp
 // Create kernel
 var builder = Kernel.CreateBuilder();
 builder.AddAzureOpenAIChatCompletion(modelId, endpoint, apiKey);
 ```
 
-Add enterprise services. One of the main benefits of using Semantic Kernel is that it supports enterprise-grade services. In this sample, we added the logging service to the kernel to help debug the AI agent.
+**Add enterprise services.** One of the main benefits of using Semantic Kernel is that it supports enterprise-grade services. In this sample, we added the logging service to the kernel to help debug the AI agent.
 
 ```csharp
 //Disable the experimental warning
@@ -61,7 +61,7 @@ Add enterprise services. One of the main benefits of using Semantic Kernel is th
 builder.Services.AddLogging(services => services.AddConsole().SetMinimumLevel(LogLevel.Trace));
 ```
 
-Build the kernel and retrieve services. Once the services have been added, we  build the kernel and retrieve the chat completion service for later use.
+**Build the kernel and retrieve services.** Once the services have been added, we  build the kernel and retrieve the chat completion service for later use.
 
 ```csharp
 Kernel kernel = builder.Build();
@@ -69,7 +69,7 @@ Kernel kernel = builder.Build();
 // Retrieve the chat completion service
 var chatCompletionService = kernel.Services.GetRequiredService<IChatCompletionService>();
 ```
-Add plugins. With plugins, you can give your AI agent the ability to run your code to retrieve information from external sources or to perform actions. In the above example, we added a plugin that allows the AI agent to interact with a light bulb. You should place your Plugins in a separate folder.
+**Add plugins.** With plugins, you can give your AI agent the ability to run your code to retrieve information from external sources or to perform actions. In the above example, we added a plugin that allows the AI agent to interact with a light bulb. You should place your Plugins in a separate folder.
 In your own code, you can create a plugin that interacts with any external service or API to achieve similar results.
 
 A good practice to structure your Plugins in the project is like this:
@@ -134,13 +134,13 @@ public string Name { get; set; }
 public bool? IsOn { get; set; }
 }
 ```
-Add the plugin to the kernel
+**Add the plugin to the kernel.**
 Once you've created your plugin, you can add it to the kernel so the AI agent can access it. In the sample, we added the LightsPlugin class to the kernel.
 ```csharp
 // Add the plugin to the kernel
 kernel.Plugins.AddFromType<LightsPlugin>("Lights");
 ```
-Planning, Semantic Kernel leverages function calling–a native feature of most LLMs–to provide planning. With function calling, LLMs can request (or call) a particular function to satisfy a user's request. Semantic Kernel then marshals the request to the appropriate function in your codebase and returns the results back to the LLM so the AI agent can generate a final response.
+**Planning.** Semantic Kernel leverages function calling–a native feature of most LLMs–to provide planning. With function calling, LLMs can request (or call) a particular function to satisfy a user's request. Semantic Kernel then marshals the request to the appropriate function in your codebase and returns the results back to the LLM so the AI agent can generate a final response.
 
 To enable automatic function calling, we first need to create the appropriate execution settings so that Semantic Kernel knows to automatically invoke the functions in the kernel when the AI agent requests them.
 ```csharp
@@ -149,7 +149,7 @@ OpenAIPromptExecutionSettings openAIPromptExecutionSettings = new()
     FunctionChoiceBehavior = FunctionChoiceBehavior.Auto()
 };
 ```
-Invoke the plugin. Finally, we invoke the AI agent with the plugin. The sample code demonstrates how to generate a non-streaming response, but you can also generate a streaming response by using the GetStreamingChatMessageContentAsync method.
+**Invoke the plugin.** Finally, we invoke the AI agent with the plugin. The sample code demonstrates how to generate a non-streaming response, but you can also generate a streaming response by using the GetStreamingChatMessageContentAsync method.
 
 ```csharp
 // Create chat history
