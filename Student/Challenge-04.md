@@ -164,7 +164,7 @@ kernel: kernel
 ```
 ###  Task 2: RAG pattern with Azure AI search plugin
 
-After completing the above plugin you should create a [plugin to retrieve data from external source](https://learn.microsoft.com/en-us/semantic-kernel/concepts/plugins/using-data-retrieval-functions-for-rag) such us Azure AI Search and generate grounded responses with semantic search. Use the AI Search data source you created in previous challenges.
+After completing the above plugin you should create a [plugin to retrieve data from external source](https://learn.microsoft.com/en-us/semantic-kernel/concepts/plugins/using-data-retrieval-functions-for-rag) such us Azure AI Search and generate grounded responses with semantic search. Use the AI Search data source created in previous challenges.
 
 Semantic search utilizes vector databases to understand and retrieve information based on the meaning and context of the query rather than just matching keywords.
 
@@ -248,7 +248,7 @@ So you have to instantiate the plugin object and add it to the Kernel like the e
 kernel.Plugins.AddFromObject(productInfoPlugin);
 ```
 
-> **Tip:**
+> [!NOTE]
 > The ProductInfoPlugin constructor has 3 parameters with the following types. You should instantiate these objects before instantiating the plugin.
 >  - ITextEmbeddingGenerationService
 >  - SearchIndexClient
