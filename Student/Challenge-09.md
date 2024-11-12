@@ -10,7 +10,7 @@ After optimizing your NL to SQL solution in the previous challenge, it's time to
 
 ## Description
 
-In this challenge, you will take the NL to SQL app you created in the previous challenge and deploy it to Azure. This involves choosing a web hosting service that suits your needs, such as Azure App Services or Azure Container Apps.
+In this challenge, you will take the NL to SQL app you created in the previous challenge and deploy it in Azure. This involves choosing a web hosting service that suits your needs, such as Azure App Services, Azure Container Apps or any other Azure app hosting service of your preference.
 
 - Azure App Services: This is a fully managed platform for building, deploying, and scaling web apps. It supports multiple languages and frameworks, and it integrates with other Azure services.
 - Azure Container Apps: This service allows you to deploy containerized applications without managing complex infrastructure. It is ideal for microservices and distributed applications.
