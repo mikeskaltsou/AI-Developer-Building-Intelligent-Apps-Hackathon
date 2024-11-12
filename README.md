@@ -72,7 +72,7 @@ The intended audience are individuals with coding skills.
 
 ### Challenge 9: **[Identify Real world usage of intelligent applications](Student/Challenge-09.md)**
 
-- In this challenge we will encourage you to think creatively about the applications of AI in different industries and understand the impact of intelligent apps in solving real-world problems.
+- This challenge encourages creative thinking about AI applications in various industries and their impact on solving real-world problems.
 
 ### (Optional) Challenge 10: **[Deploy your intelligent app as a web chatbot](Student/Challenge-10.md)**
 
