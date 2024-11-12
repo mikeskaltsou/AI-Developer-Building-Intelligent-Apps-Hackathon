@@ -18,7 +18,7 @@ This challenge will guide you through the process of developing your first intel
 
 In just a few steps, you can build your first AI agent with Semantic Kernel in either Python, .NET, or Java.
 
-### Light Bulb interaction plugin
+### Task 1: Light Bulb interaction plugin
 
 As a starting point you can follow the steps below to start development with Semantic Kernel. In this .NET console application example, you will create a plugin, allowing the AI agent to interact with a light bulb.
 
@@ -162,7 +162,7 @@ executionSettings: openAIPromptExecutionSettings,
 kernel: kernel
 );
 ```
-### RAG pattern with Azure AI search plugin
+###  Task 2: RAG pattern with Azure AI search plugin
 
 After completing the above plugin you should create a [plugin to retrieve data from external source](https://learn.microsoft.com/en-us/semantic-kernel/concepts/plugins/using-data-retrieval-functions-for-rag) such us Azure AI Search and generate grounded responses with semantic search. Use the AI Search data source you created in previous challenges.
 
