@@ -26,10 +26,6 @@ You should complete the following steps
 - Evaluate the flow using a question and answer evaluation dataset.
 - Deploy the flow for consumption.
 
-```bash
-Tip: Create the prompt flow from the playground to avoid creating the flow from scratch. By doing this, the playground setup will be exported to prompt flow.
-```
-
 > [!NOTE]
 > Create the prompt flow from the playground to avoid creating the flow from scratch. By doing this, the playground setup will be exported to prompt flow.
 
