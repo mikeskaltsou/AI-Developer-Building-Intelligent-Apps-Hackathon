@@ -37,7 +37,10 @@ string searchIndex = "<Add Azure Search Key>";
 string searchApiKey = "<Add Azure Search Index for eCommerce products>";
 ```
 
-Create client with an API key. While this is not as secure as Microsoft Entra-based authentication, it's possible to authenticate using a client subscription key. Avoid authenticating with api keys on production environments.
+Create client with an API key.
+
+> [!NOTE]
+> While this is not as secure as Microsoft Entra-based authentication, it's possible to authenticate using a client subscription key. Avoid authenticating with api keys on production environments.
 
 ```csharp
 AzureOpenAIClient azureClient = new(
