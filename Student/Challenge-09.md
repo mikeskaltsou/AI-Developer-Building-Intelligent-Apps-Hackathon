@@ -1,30 +1,30 @@
-# (Optional) Challenge 09 - Natural Language to SQL as a web chatbot
+# Challenge 09 - Identify Real world usage of intelligent applications
 
- [< Previous Challenge](./Challenge-08.md) - **[Home](../README.md)**
+ [< Previous Challenge](./Challenge-08.md) - **[Home](../README.md)** - [Next Challenge >](./Challenge-10.md)
  
 ## Introduction
 
-Are you feeling too comfortable and eager to do more? This additional challenge will push your skills further by deploying your application to Azure. 
+This challenge will encourage you to think creatively about the applications of AI in different industries and understand the impact of intelligent apps in solving real-world problems.
 
-After optimizing your NL to SQL solution in the previous challenge, it's time to deploy your intelligent app and run it as a web chatbot.
+It's time to explore the potential of intelligent applications across different industries. By identifying and discussing examples of intelligent apps, you will gain insights into how AI can be leveraged to solve real-world problems in diverse sectors.
 
 ## Description
 
-In this challenge, you will take the NL to SQL app you created in the previous challenge and deploy it in Azure. This involves choosing a web hosting service that suits your needs, such as Azure App Services, Azure Container Apps or any other Azure app hosting service of your preference.
+You should identify and describe five examples of intelligent applications that can be applied in various industries such as education, financial, retail, and healthcare sectors. Each example should include a brief description of the app, its functionality, and the benefits it provides to the industry.
 
-- Azure App Services: This is a fully managed platform for building, deploying, and scaling web apps. It supports multiple languages and frameworks, and it integrates with other Azure services.
-- Azure Container Apps: This service allows you to deploy containerized applications without managing complex infrastructure. It is ideal for microservices and distributed applications.
-
-The goal is to make your app accessible as a web chatbot, where users can interact with it by asking questions in natural language and receiving answers based on actual data. Additionally, you need to ensure that users are authenticated before they can access the chatbot, adding a layer of security to your application.
+## Guidelines
+- **Education:** Identify an intelligent app that enhances learning experiences, improves student engagement, or assists educators in managing their tasks.
+- **Finance:** Find an intelligent app that helps in financial planning, fraud detection, or provides personalized financial advice.
+- **Retail:** Describe an intelligent app that improves customer experience, optimizes inventory management, or enhances sales strategies.
+- **Healthcare:** Identify an intelligent app that assists in patient care, medical diagnosis, or streamlines healthcare operations.
+- **Other:** Choose an intelligent app from any other industry that showcases innovative use of AI to solve industry-specific challenges.
 
 ## Success Criteria
-- Demonstrate that you have deployed your chat web app to Azure.
-- Demonstrate that you can ask questions in natural language and you get the answers with the actual data.
-- Demonstrate that the users are authenticated before accessing the web chatbot.
+- Discuss with your coach the problem or opportunity your application addresses.
+- Discuss with your coach the functionality of your intelligent application.
+- Discuss with your coach and explain the AI technologies used and how they enhance the application's capabilities.
+- Showcase the potential impact and benefits of your application in the chosen industry.
 
 ## Learning Resources
-- [Develop AI apps using Azure AI services](https://learn.microsoft.com/en-us/azure/developer/ai/)
-- [Get started with the chat using your own data sample for .NET](https://learn.microsoft.com/en-us/dotnet/ai/get-started-app-chat-template?toc=%2Fazure%2Fdeveloper%2Fai%2Ftoc.json&bc=%2Fazure%2Fdeveloper%2Fai%2Fbreadcrumb%2Ftoc.json&tabs=github-codespaces)
-- [microsoft/sample-app-aoai-chatGPT: Sample code for a simple web chat experience through Azure OpenAI, including Azure OpenAI On Your Data.](https://github.com/microsoft/sample-app-aoai-chatGPT)
-- [Azure-Samples/openai-chat-app-quickstart: A simple chat application that uses managed identity for Azure OpenAI access. Designed for deployment on Azure Container Apps with the Azure Developer CLI.](https://github.com/Azure-Samples/openai-chat-app-quickstart)
--[microsoft/chat-copilot](https://github.com/microsoft/chat-copilot)
+- [AI in Action | Microsoft](https://news.microsoft.com/ai-in-action)
+- [Microsoft Industry Solutions](https://www.microsoft.com/en-us/Industry)

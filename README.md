@@ -70,7 +70,11 @@ The intended audience are individuals with coding skills.
 
 - After completing the basic scenario of converting natural language to SQL queries, the next step is to optimise the solution by implementing the RAG pattern. This involves not passing the entire SQL schema in the LLM context. Instead, you will use the Semantic Kernel's ability to decide which table schemas to include. Additionally, you will enable the Semantic Kernel to execute SQL queries and display the results to the user.
 
-### (Optional) Challenge 9: **[Natural Language to SQL as a web chatbot](Student/Challenge-09.md)**
+### Challenge 9: **[Identify Real world usage of intelligent applications](Student/Challenge-09.md)**
+
+- In this challenge we will encourage you to think creatively about the applications of AI in different industries and understand the impact of intelligent apps in solving real-world problems.
+
+### (Optional) Challenge 10: **[Deploy your intelligent app as a web chatbot](Student/Challenge-10.md)**
 
 - Are you feeling too comfortable and eager to do more? This additional challenge will push your skills further by deploying your NL to SQL application to Azure as a web chatbot.
 
