@@ -12,7 +12,7 @@ Upon completing the workshop, participants will be able to:
 - Develop intelligent applications using Azure Open AI SDK.
 - Develop intelligent applications using Semantic Kernel in either C# or Python, incorporating AI prompts seamlessly.
 - Develop a Natural Language to SQL intelligent application.
-- Apply the learned concepts to create innovative solutions that address real-world challenges using Azure OpenAI.
+- Apply the learned concepts to create innovative solutions that address real-world challenges across industries.
   
 ## Prerequisites
 - Familiarity with Azure services and the Azure portal.
