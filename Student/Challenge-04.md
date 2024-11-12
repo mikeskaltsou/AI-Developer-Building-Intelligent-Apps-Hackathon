@@ -168,6 +168,8 @@ Semantic search utilizes vector databases to understand and retrieve information
 
 Semantic search excels in environments where user queries are complex, open-ended, or require a deeper understanding of the content. For example, searching for "best smartphones for photography" would yield results that consider the context of photography features in smartphones, rather than just matching the words "best," "smartphones," and "photography."
 
+![image](../Resources/Images/functioncalling.png)
+
 Add the Azure.Search.Documents package
 ```bash
 dotnet add package Azure.Search.Documents
