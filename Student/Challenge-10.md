@@ -23,8 +23,7 @@ The goal is to make your app accessible as a web chatbot, where users can intera
 - Demonstrate that the users are authenticated before accessing the web chatbot.
 
 ## Learning Resources
-- [Develop AI apps using Azure AI services](https://learn.microsoft.com/en-us/azure/developer/ai/)
-- [Get started with the chat using your own data sample for .NET](https://learn.microsoft.com/en-us/dotnet/ai/get-started-app-chat-template?toc=%2Fazure%2Fdeveloper%2Fai%2Ftoc.json&bc=%2Fazure%2Fdeveloper%2Fai%2Fbreadcrumb%2Ftoc.json&tabs=github-codespaces)
+- [Develop AI apps using Azure AI services](https://learn.microsoft.com/en-us/azure/developer/ai/intelligent-app-templates?pivots=dotnet)
 -[How to get started with an AI template - Azure AI Studio | Microsoft Learn](https://learn.microsoft.com/en-us/azure/ai-studio/how-to/develop/ai-template-get-started?tabs=csharp)
 - [microsoft/sample-app-aoai-chatGPT: Sample code for a simple web chat experience through Azure OpenAI, including Azure OpenAI On Your Data.](https://github.com/microsoft/sample-app-aoai-chatGPT)
 - [Azure-Samples/openai-chat-app-quickstart: A simple chat application that uses managed identity for Azure OpenAI access. Designed for deployment on Azure Container Apps with the Azure Developer CLI.](https://github.com/Azure-Samples/openai-chat-app-quickstart)
