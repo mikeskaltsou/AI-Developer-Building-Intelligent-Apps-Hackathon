@@ -10,7 +10,7 @@ By identifying and discussing examples of intelligent apps, you will gain insigh
 
 ## Description
 
-You should identify and describe five examples of intelligent applications that can be applied in various industries such as education, finance, retail, healthcare or other sector. Each example should include a brief description of the app, its functionality, and the benefits it provides to the industry.
+You should identify and describe three examples of intelligent applications that can be applied in various industries such as education, finance, retail, healthcare or other sector. Each example should include a brief description of the app, its functionality, and the benefits it provides to the industry.
 
 ### Guidelines
 - **Education:** Identify an intelligent app that enhances learning experiences, improves student engagement, or assists educators in managing their tasks.
