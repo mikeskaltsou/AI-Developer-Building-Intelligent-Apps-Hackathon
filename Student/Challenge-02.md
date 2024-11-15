@@ -25,6 +25,7 @@ You should complete the following steps
 - Customize prompt flow and ground your data created in previous challenge.
 - Evaluate the flow using a question and answer evaluation dataset.
 - Deploy the flow for consumption.
+- Evaluate the deployed flow with your prefered metrics
 
 > [!NOTE]
 > Create the prompt flow from the playground to avoid creating the flow from scratch. By doing this, the playground setup will be exported to prompt flow.
@@ -33,8 +34,8 @@ You can find the sample product information data used in previous challenge [her
 
 ## Success Criteria
 - Demonstrate that you can chat within prompt flow with product info. Get answers to questions such as "How much are the TrailWalker hiking shoes?"
-- Evaluate the flow using a question and answer evaluation dataset
-- Show the evaluation status and results
+- Evaluate the flow using a question and answer evaluation dataset (here is the [eval_dataset](https://github.com/Azure-Samples/rag-data-openai-python-promptflow/blob/main/src/evaluation/evaluation_dataset.jsonl))
+- Show the evaluation status and results 
 - Demonstrate that you deploy the flow and you can use the REST endpoint or the SDK to use the deployed flow.
 - The prompt flow steps were automatically generated when the prompt flow was created from Chat playground. Describe the prompt flow steps to your coach.
 
@@ -49,3 +50,4 @@ You can find the sample product information data used in previous challenge [her
 - [Evaluation of generative AI applications - Azure AI Studio | Microsoft Learn](https://learn.microsoft.com/en-us/azure/ai-studio/concepts/evaluation-approach-gen-ai)
 - [How to evaluate generative AI apps with Azure AI Studio - Azure AI Studio | Microsoft Learn](https://learn.microsoft.com/en-us/azure/ai-studio/how-to/evaluate-generative-ai-app)
 - [How to view evaluation results in Azure AI Studio - Azure AI Studio | Microsoft Learn](https://learn.microsoft.com/en-us/azure/ai-studio/how-to/evaluate-flow-results)
+- [Monitoring evaluation metrics descriptions and use cases](https://learn.microsoft.com/en-us/azure/machine-learning/prompt-flow/concept-model-monitoring-generative-ai-evaluation-metrics?view=azureml-api-2)
