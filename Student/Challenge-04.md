@@ -162,7 +162,14 @@ executionSettings: openAIPromptExecutionSettings,
 kernel: kernel
 );
 ```
-###  Task 2: RAG pattern with Azure AI search plugin
+
+###  Task 2: Current time plugin
+
+In this task, you will create a plugin that allows the AI agent to display the current time. Since large language models (LLMs) are trained on past data and do not have real-time capabilities, they cannot provide the current time on their own. 
+
+By creating this plugin, you will enable the AI agent to call a function that retrieves and displays the current time.
+
+###  Task 3: RAG pattern with Azure AI search plugin
 
 After completing the above plugin you should create a [plugin to retrieve data from external source](https://learn.microsoft.com/en-us/semantic-kernel/concepts/plugins/using-data-retrieval-functions-for-rag) such us Azure AI Search and generate grounded responses with semantic search. Use the AI Search data source created in previous challenges.
 
@@ -257,6 +264,7 @@ kernel.Plugins.AddFromObject(productInfoPlugin);
 ## Success Criteria
 - Ensure that your application is running and you are able to debug the application.
 - Ensure that you can interact with the application and switch on or off the light bulbs.
+- Ensure that you are able to request the current time and receive an accurate response.
 - Set a break point in one of the plugins and hit the break point with a user prompt
 - Debug and inspect the chat history object to see the sequence of function calls and results.
 - Create a plugin to retrieve data from external source (Azure AI Search) created in previous challenge to generate grounded responses.
