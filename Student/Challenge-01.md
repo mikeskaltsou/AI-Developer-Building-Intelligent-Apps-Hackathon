@@ -21,12 +21,10 @@ Once confirmed, you will add your own data to the model and conduct testing to e
 Finally, you will deploy the web app, providing a robust and interactive chat solution tailored to your needs.
 This structured approach ensures that each step is carefully designed, leading to a successful implementation.
 
-Please deploy the Azure resources in East US 2 region.
-
 You should complete the following steps:
 
   - Create an Azure AI Studio project.
-  - Deploy an Azure OpenAI model.
+  - Deploy an Azure OpenAI model (version 0613 or later).
   - Chat in the playground without your data.
   - Add your data, create an Azure AI Search index that will use hybrid queries.
   - Chat in the playground with your data.
@@ -36,7 +34,6 @@ You can find the sample product information data for grounding your own data [he
 
 ## Success Criteria
 
-- Ensure that you deploy the Azure resources in East US 2 region.
 - Demonstrate that you can chat with your own data in AI Studio Chat Playground with Hybrid Search.
 - Demonstrate that you get an answer (on product information data) by using the prompt "How much are the TrailWalker hiking shoes".
 - Deploy the web app and demonstrate that you can chat on your own data in the deployed app.
